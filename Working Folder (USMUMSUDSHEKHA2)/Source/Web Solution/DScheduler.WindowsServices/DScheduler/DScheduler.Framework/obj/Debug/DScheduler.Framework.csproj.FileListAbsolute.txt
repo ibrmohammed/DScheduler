@@ -1,0 +1,15 @@
+C:\DSchedule\DScheduler.WindowServices\DScheduler\DScheduler.Framework\bin\Debug\DScheduler.Framework.dll
+C:\DSchedule\DScheduler.WindowServices\DScheduler\DScheduler.Framework\bin\Debug\DScheduler.Framework.pdb
+C:\DSchedule\DScheduler.WindowServices\DScheduler\DScheduler.Framework\bin\Debug\Configuration.dll
+C:\DSchedule\DScheduler.WindowServices\DScheduler\DScheduler.Framework\bin\Debug\DScheduler.Framework.Helpers.dll
+C:\DSchedule\DScheduler.WindowServices\DScheduler\DScheduler.Framework\bin\Debug\Microsoft.Practices.EnterpriseLibrary.Common.dll
+C:\DSchedule\DScheduler.WindowServices\DScheduler\DScheduler.Framework\bin\Debug\Microsoft.Practices.EnterpriseLibrary.Data.dll
+C:\DSchedule\DScheduler.WindowServices\DScheduler\DScheduler.Framework\bin\Debug\Microsoft.Practices.EnterpriseLibrary.Logging.dll
+C:\DSchedule\DScheduler.WindowServices\DScheduler\DScheduler.Framework\bin\Debug\Microsoft.Practices.ServiceLocation.dll
+C:\DSchedule\DScheduler.WindowServices\DScheduler\DScheduler.Framework\bin\Debug\Microsoft.Practices.Unity.Configuration.dll
+C:\DSchedule\DScheduler.WindowServices\DScheduler\DScheduler.Framework\bin\Debug\Microsoft.Practices.Unity.dll
+C:\DSchedule\DScheduler.WindowServices\DScheduler\DScheduler.Framework\bin\Debug\Microsoft.Practices.Unity.Interception.dll
+C:\DSchedule\DScheduler.WindowServices\DScheduler\DScheduler.Framework\bin\Debug\DScheduler.Framework.Helpers.pdb
+C:\DSchedule\DScheduler.WindowServices\DScheduler\DScheduler.Framework\obj\Debug\DScheduler.Framework.csprojResolveAssemblyReference.cache
+C:\DSchedule\DScheduler.WindowServices\DScheduler\DScheduler.Framework\obj\Debug\DScheduler.Framework.dll
+C:\DSchedule\DScheduler.WindowServices\DScheduler\DScheduler.Framework\obj\Debug\DScheduler.Framework.pdb

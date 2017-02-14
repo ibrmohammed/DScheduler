@@ -1,0 +1,7 @@
+Admin = users\admin\ss.ini
+Guest = users\guest\ss.ini
+sudshekhar = users\sudshekh\ss.ini
+Pagera = users\pagera\ss.ini
+Ksinha = users\ksinha\ss.ini
+Atiwari = users\atiwari\ss.ini
+Ibrahim = users\ibrahim\ss.ini

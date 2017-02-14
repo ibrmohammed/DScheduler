@@ -1,0 +1,44 @@
+﻿@model DSchedule.Contracts.Models.JobMonitor
+
+<div style="height:100%; width:100%" class="detailssection">
+    <h3>Session Details : </h3>
+    @using (Html.BeginForm("UpdateUProcStatusForSession", "JobMonitor", FormMethod.Post, new { transaction = Model }))
+    {
+        @Html.HiddenFor(model => model.UprocID)
+        @Html.HiddenFor(model => model.SessionID)
+        <table style="height:240px; width:100%">
+            <tr style="height:15%">
+                <td align="left" width="20%">
+                    @Html.Label("UProc Name : ")
+                </td>
+                <td align="left" style="color:black;">
+                    @Model.UprocName.ToString()
+                </td>
+            </tr>
+            <tr style="height:15%">
+                <td align="left" width="20%">
+                    @Html.Label("Session Name : ")
+                </td>
+                <td align="left" style="color:black;">
+                    @Model.SessionName.ToString()
+                </td>
+            </tr>
+            <tr style="height:15%">
+                <td align="left" width="20%">
+                    @Html.Label("UProc Status : ")
+                </td>
+                <td align="left" style="color:black;">
+                    <div class="editor-field">
+                        @Html.DropDownListFor(model => model.UProcStatus,
+                                                 (SelectList)ViewBag.JobActionTypes, new { style = "width:13em; height:2.5em" })
+                    </div>
+                </td>
+            </tr>
+            <tr style="height:55%">
+                <td align="center">
+                    <input name="btnUpdate" type="submit" value="UPDATE" />
+                </td>
+            </tr>
+        </table>
+    }
+</div>

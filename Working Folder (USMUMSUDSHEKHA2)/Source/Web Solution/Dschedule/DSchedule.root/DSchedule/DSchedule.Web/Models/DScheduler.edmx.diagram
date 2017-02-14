@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="9dd9c1c9888b4f5c9d0b62a5291db65c" Name="Diagram1">
+        <EntityTypeShape EntityType="DSchedulerModel.AspNetRole" Width="1.5" PointX="0.75" PointY="2.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="DSchedulerModel.AspNetUserClaim" Width="1.5" PointX="5.25" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="DSchedulerModel.AspNetUserLogin" Width="1.5" PointX="5.25" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DSchedulerModel.AspNetUser" Width="1.5" PointX="3" PointY="1.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="DSchedulerModel.TDependency" Width="1.5" PointX="8.25" PointY="15.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DSchedulerModel.TEnvironment" Width="1.5" PointX="0.75" PointY="14.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="DSchedulerModel.TJobAction" Width="1.5" PointX="3" PointY="19.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="DSchedulerModel.TJobMonitor" Width="1.5" PointX="11.25" PointY="15.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="DSchedulerModel.TJobRule" Width="1.5" PointX="5.25" PointY="23" IsExpanded="true" />
+        <EntityTypeShape EntityType="DSchedulerModel.TLogin" Width="1.5" PointX="3" PointY="23.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="DSchedulerModel.TNode" Width="1.5" PointX="1.5" PointY="9.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="DSchedulerModel.TOutageDetail" Width="1.5" PointX="7.5" PointY="23.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DSchedulerModel.TRecurrencePattern" Width="1.5" PointX="3" PointY="28" IsExpanded="true" />
+        <EntityTypeShape EntityType="DSchedulerModel.TRecurrenceRange" Width="1.5" PointX="3" PointY="32.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DSchedulerModel.TRef" Width="1.5" PointX="0.75" PointY="18.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="DSchedulerModel.TReport" Width="1.5" PointX="6" PointY="7" IsExpanded="true" />
+        <EntityTypeShape EntityType="DSchedulerModel.TSession" Width="1.5" PointX="6" PointY="18" IsExpanded="true" />
+        <EntityTypeShape EntityType="DSchedulerModel.TTemplate" Width="1.5" PointX="3.75" PointY="7" IsExpanded="true" />
+        <EntityTypeShape EntityType="DSchedulerModel.TUproc" Width="1.5" PointX="3" PointY="13.625" IsExpanded="true" />
+        <AssociationConnector Association="DSchedulerModel.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" ManuallyRouted="false" />
+        <AssociationConnector Association="DSchedulerModel.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" ManuallyRouted="false" />
+        <AssociationConnector Association="DSchedulerModel.FK_TDependencies_SessionID" ManuallyRouted="false" />
+        <AssociationConnector Association="DSchedulerModel.FK_TDependencies_UprocID" ManuallyRouted="false" />
+        <AssociationConnector Association="DSchedulerModel.FK_TEnvironment_NodeID" ManuallyRouted="false" />
+        <AssociationConnector Association="DSchedulerModel.FK_TJobMonitor_EnvironmentID" ManuallyRouted="false" />
+        <AssociationConnector Association="DSchedulerModel.FK_TSession_EnvironmentID" ManuallyRouted="false" />
+        <AssociationConnector Association="DSchedulerModel.FK_TUproc_EnvironmentID" ManuallyRouted="false" />
+        <AssociationConnector Association="DSchedulerModel.FK_TJobAction_JobActionTypeID" ManuallyRouted="false" />
+        <AssociationConnector Association="DSchedulerModel.FK_TJobAction_JobID" ManuallyRouted="false" />
+        <AssociationConnector Association="DSchedulerModel.FK_TJobMonitor_NodeID" ManuallyRouted="false" />
+        <AssociationConnector Association="DSchedulerModel.FK_TJobMonitor_SessionID" ManuallyRouted="false" />
+        <AssociationConnector Association="DSchedulerModel.FK_TJobMonitor_UprocID" ManuallyRouted="false" />
+        <AssociationConnector Association="DSchedulerModel.FK_TJobRule_ActivityTypeID" ManuallyRouted="false" />
+        <AssociationConnector Association="DSchedulerModel.FK_TJobRule_RecurrenceID" ManuallyRouted="false" />
+        <AssociationConnector Association="DSchedulerModel.FK_TJobRule_SessionID" ManuallyRouted="false" />
+        <AssociationConnector Association="DSchedulerModel.FK_TJobRule_UprocID" ManuallyRouted="false" />
+        <AssociationConnector Association="DSchedulerModel.FK_TOutageDetails_JobRuleID" ManuallyRouted="false" />
+        <AssociationConnector Association="DSchedulerModel.FK_TLogin_RefID" ManuallyRouted="false" />
+        <AssociationConnector Association="DSchedulerModel.FK_TRecurrencePattern_RecPattTypeID" ManuallyRouted="false" />
+        <AssociationConnector Association="DSchedulerModel.FK_TRecurrenceRange_RecRangeTypeID" ManuallyRouted="false" />
+        <AssociationConnector Association="DSchedulerModel.FK_TSession_AccountTypeID" ManuallyRouted="false" />
+        <AssociationConnector Association="DSchedulerModel.FK_TUproc_AccountTypeID" ManuallyRouted="false" />
+        <AssociationConnector Association="DSchedulerModel.FK_TUproc_JobTypeID" ManuallyRouted="false" />
+        <AssociationConnector Association="DSchedulerModel.FK_TReports_TemplateID" ManuallyRouted="false" />
+        <AssociationConnector Association="DSchedulerModel.AspNetUserRoles" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

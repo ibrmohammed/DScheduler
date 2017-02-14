@@ -1,0 +1,24 @@
+﻿@model DSchedule.Contracts.Models.Outage
+@using HtmlHelpers.BeginCollectionItem
+@using (Html.BeginCollectionItem("Outage"))
+{
+    <tr>
+        <td>
+            @Html.DisplayFor(m => m.OutageName)
+            @Html.HiddenFor(m => m.OutageId)
+            @Html.HiddenFor(m => m.OutageName)
+        </td>
+        <td>
+            @Html.DisplayFor(m => m.OutageDate)
+            @Html.HiddenFor(m => m.OutageDate)
+        </td>
+        <td>
+            @Html.DisplayFor(m => m.OutageFrom)
+            @Html.HiddenFor(m => m.OutageFrom)
+        </td>
+        <td>
+            @Html.DisplayFor(m => m.OutageTo)
+            @Html.HiddenFor(m => m.OutageTo)
+        </td>
+    </tr>
+}

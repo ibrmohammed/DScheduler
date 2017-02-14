@@ -1,0 +1,8 @@
+c:\users\astiwari\documents\visual studio 2012\Projects\DScheduler\DScheduler.Common\bin\Debug\DScheduler.Common.dll
+c:\users\astiwari\documents\visual studio 2012\Projects\DScheduler\DScheduler.Common\bin\Debug\DScheduler.Common.pdb
+c:\users\astiwari\documents\visual studio 2012\Projects\DScheduler\DScheduler.Common\obj\Debug\DScheduler.Common.dll
+c:\users\astiwari\documents\visual studio 2012\Projects\DScheduler\DScheduler.Common\obj\Debug\DScheduler.Common.pdb
+C:\DSchedule\DScheduler.WindowServices\DScheduler\DScheduler.Common\bin\Debug\DScheduler.Common.dll
+C:\DSchedule\DScheduler.WindowServices\DScheduler\DScheduler.Common\bin\Debug\DScheduler.Common.pdb
+C:\DSchedule\DScheduler.WindowServices\DScheduler\DScheduler.Common\obj\Debug\DScheduler.Common.dll
+C:\DSchedule\DScheduler.WindowServices\DScheduler\DScheduler.Common\obj\Debug\DScheduler.Common.pdb

@@ -1,0 +1,134 @@
+﻿@{
+    ViewBag.Title = "NewUpdateJobView";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>DSchedule New/Update Job</h2>
+<html>
+<head>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+    @Scripts.Render("~/bundles/jquery")
+    <link href="@Url.Content("~/Content/Gridmvc.css")" rel="stylesheet" />
+    <link href="@Url.Content("~/Content/bootstrap.min.css")" rel="stylesheet" />
+    <script src="@Url.Content("~/Scripts/gridmvc.min.js")"></script>
+    @*<script language="javascript">
+            function CallMyFunc() {
+                $('#newnode').val(null);
+            }
+        </script>*@
+    <script src="@Url.Content("~/Scripts/NewUpdateJob.js")"></script>
+</head>
+<body>
+    <div class="container-fluid">
+        @model DSchedule.Contracts.Models.NewUpdateJob
+
+        @using GridMvc.Html
+        @*@{
+                ViewBag.Title = "Details";
+            }
+            @{
+                Layout = null;
+            }*@
+
+        @Html.Grid((List<DSchedule.Contracts.Models.NewUpdateJobModel>)Model.NewUpdateJobs).Named("environmentGrid").Columns(columns =>
+   {
+       columns.Add(c => c.JobRuleId, true).Titled("JobRule ID").Filterable(false).Css("style: Hide");
+       columns.Add(c => c.UprocId, true).Titled("Uproc ID").Filterable(false).Css("style: Hide");
+       columns.Add(c => c.UprocName).Titled("Uprocs").Filterable(true);
+       columns.Add(c => c.SessionId, true).Titled("Session ID").Filterable(false).Css("style: Hide");
+       columns.Add(c => c.SessionName).Titled("Session").Filterable(false);
+       columns.Add(c => c.EnvironmentId, true).Titled("Environment ID").Filterable(false).Css("style: Hide");
+       columns.Add(c => c.EnvironmentName).Titled("Environment").Filterable(false);
+       columns.Add(c => c.NodeId, true).Titled("Node ID").Filterable(false).Css("style: Hide");
+       columns.Add(c => c.NodeName).Titled("Node").Filterable(false);
+       columns.Add(c => c.ScheduledStartDate).Titled("Scheduled Date/Time").Filterable(true);
+       columns.Add(c => c.StartedDateTime).Titled("Started Date/Time").Filterable(true);
+       columns.Add(c => c.CompletedDateTime).Titled("Completed Date/Time").Filterable(true);
+       columns.Add(c => c.CreatedBy).Titled("Created By").Filterable(true);
+       columns.Add(c => c.CreateDate).Titled("Created Date").Filterable(true);
+       columns.Add(c => c.UpdatedBy).Titled("Updated By").Filterable(true);
+       columns.Add(c => c.UpdateDate).Titled("Updated Date").Filterable(true);
+       //columns.Add()
+       //.Encoded(false)
+       //.Sanitized(false)
+       //.SetWidth(30)
+       //.RenderValueAs(o => Html.Label("Edit")).Css("text-decoration: underline");
+       //"Edit", "Edit", new { id = o.EnvironmentID }));
+
+   }).WithPaging(7).Sortable(true)
+    </div>
+    <div style="height: 40px; width:100%"></div>
+    <div class="container-fluid">
+        @using (Html.BeginForm("SaveUpdateJob", "JobDesign", FormMethod.Post, new { transaction = Model }))
+        {
+            <div class="form-horizontal well">
+                <div class="form-group">
+                    <label for="UprocID" class="col-md-1">Uproc</label>
+                    <div class="col-md-2">
+                        @{
+                            List<SelectListItem> listItems = new List<SelectListItem>();
+                            Model.UprocsList.ForEach(x => listItems.Add(new SelectListItem { Text = x.UprocName, Value = x.UprocID.ToString() }));
+                        }
+                        @Html.DropDownListFor(model => Model.UprocId, listItems, new { @Class = "form-control", @id = "UprocID" })
+                        @Html.HiddenFor(model => Model.JobRuleId, new { @Class = "form-control", @id = "JobRuleId" })
+                    </div>
+                    <label for="SessionId" class="col-md-1">Session</label>
+                    <div class="col-md-2">
+                        @{
+                            List<SelectListItem> listItems1 = new List<SelectListItem>();
+                            Model.SessionsList.ForEach(x => listItems1.Add(new SelectListItem { Text = x.Session, Value = x.SessionId.ToString() }));
+                        }
+                        @Html.DropDownListFor(model => Model.SessionId, listItems1, new { @Class = "form-control", @id = "SessionId" })
+                    </div>
+                    <label for="EnvironmentID" class="col-md-1">Environment</label>
+                    <div class="col-md-2">
+
+                        @{
+                            List<SelectListItem> listItems2 = new List<SelectListItem>();
+                            Model.EnvironmentList.ForEach(x => listItems2.Add(new SelectListItem { Text = x.EnvironmentName, Value = x.EnvironmentID.ToString() }));
+                        }
+                        @Html.DropDownListFor(model => Model.EnvironmentId, listItems2, new { @Class = "form-control", @id = "EnvironmentID" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+
+                    <label for="startDate" class="col-md-1">Job Start Date/Time:</label>
+                    <div class="col-md-2">
+                        @{
+                            List<SelectListItem> listItems3 = new List<SelectListItem>();
+                            Model.UprocsList.ForEach(x => listItems3.Add(new SelectListItem { Text = x.UprocName, Value = x.UprocID.ToString() }));
+                        }
+                        @Html.DropDownListFor(model => Model.UprocId, listItems3, new { @Class = "form-control", @id = "startDate" })
+                    </div>
+                    <div class="col-md-2">
+
+                        @*@{
+                                List<SelectListItem> listItems1 = new List<SelectListItem>();
+                                Model.SessionsList.ForEach(x => listItems1.Add(new SelectListItem { Text = x.Session, Value = x.SessionId.ToString() }));
+                            }
+                            @Html.DropDownListFor(model => Model.SessionId, listItems1, new { @id = "SessionId" })*@
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-md-2">
+                        <input type="button" class="btn btn-primary" value="New Job" name="btnNewNode" onclick="NewJob()" />
+                    </div>
+
+                    <div class="col-md-2">
+                        <input name="btnSave" class="btn btn-primary" type="submit" value="Save" />
+                    </div>
+                    <div class="col-md-2">
+                        <input id="btnCancel" class="btn btn-primary" type="button" value="Cancel" />
+                    </div>
+
+
+                </div>
+            </div>
+                            }
+    </div>
+</body>
+</html>
+
+

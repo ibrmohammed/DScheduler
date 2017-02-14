@@ -1,0 +1,189 @@
+﻿@*<!DOCTYPE html>
+    <html lang="en">
+    <head>
+        @model DSchedule.Contracts.Models.LoginModel
+        @{
+            ViewBag.Title = "DScheduler";
+            Layout = "";
+        }
+        @Styles.Render("~/Content/css")
+        @Scripts.Render("~/bundles/modernizr")
+        @Scripts.Render("~/bundles/jquery")
+        @Scripts.Render("~/bundles/jqueryval")
+    </head>
+    <body>
+        <div class="navheader">
+            <p class="site-title">@ViewBag.Title</p>
+        </div>
+        <div id="body">
+            <section id="loginForm">
+                    @using (Html.BeginForm())
+                    {
+                        @Html.AntiForgeryToken()
+                        <fieldset>
+                            <legend>Log in Form</legend>
+                            <ol>
+                                <li>
+                                    @Html.LabelFor(m => m.UserName)
+                                    @Html.TextBoxFor(m => m.UserName)
+                                    @Html.ValidationMessageFor(m => m.UserName)
+                                </li>
+                                <li>
+                                    @Html.LabelFor(m => m.Password)
+                                    @Html.PasswordFor(m => m.Password)
+                                    @Html.ValidationMessageFor(m => m.Password)
+                                </li>
+                            </ol>
+                            <input type="submit" value="Log in" />
+                        </fieldset>
+                    }
+            </section>
+        </div>
+        <footer>
+            <div class="content-wrapper">
+                <div class="float-left">
+                    <p>&copy; @DateTime.Now.Year - D-Scheduler</p>
+                </div>
+            </div>
+        </footer>
+
+        @Scripts.Render("~/bundles/jqueryval")
+        @Scripts.Render("~/bundles/jquery")
+    </body>
+    </html>*@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link href='http://fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'>
+    <meta charset="UTF-8">
+    @model DSchedule.Contracts.Models.LoginModel
+    @{
+        ViewBag.Title = "DScheduler";
+        Layout = "";
+    }
+    <title>DScheduler - Login</title>
+    <style>
+        body {
+            background: url('C:/Users/astiwari/Desktop/Template1.png') no-repeat fixed center center;
+            background-size: cover;
+            font-family: Montserrat;
+        }
+
+        li.nostyle {
+            list-style-type: none;
+        }
+
+        .logo {
+            width: 213px;
+            height: 36px;
+            margin: 30px auto;
+        }
+
+        .login-block {
+            width: 320px;
+            padding: 5px;
+            background: #fff;
+            border-radius: 5px;
+            border-top: 5px solid #ff656c;
+            margin: 0 auto;
+        }
+
+            .login-block h1 {
+                text-align: center;
+                color: #000;
+                font-size: 18px;
+                text-transform: uppercase;
+                margin-top: 0;
+                margin-bottom: 20px;
+            }
+
+            .login-block input {
+                width: 100%;
+                height: 42px;
+                box-sizing: border-box;
+                border-radius: 5px;
+                border: 1px solid #ccc;
+                margin-bottom: 20px;
+                font-size: 14px;
+                font-family: Montserrat;
+                padding: 0 10px 0 10px;
+                outline: none;
+            }
+
+                .login-block input#username {
+                    background: top no-repeat;
+                    background-size: 16px 80px;
+                }
+
+                    .login-block input#username:focus {
+                        background: #fff 20px bottom no-repeat;
+                        background-size: 16px 80px;
+                    }
+
+                .login-block input#password {
+                    background: #fff 20px top no-repeat;
+                    background-size: 16px 80px;
+                }
+
+                    .login-block input#password:focus {
+                        background: #fff 20px bottom no-repeat;
+                        background-size: 16px 80px;
+                    }
+
+                .login-block input:active, .login-block input:focus {
+                    border: 1px solid #ff656c;
+                }
+
+            .login-block button {
+                width: 100%;
+                height: 40px;
+                background: #ff656c;
+                box-sizing: border-box;
+                border-radius: 5px;
+                border: 1px solid #e15960;
+                color: #fff;
+                font-weight: bold;
+                text-transform: uppercase;
+                font-size: 14px;
+                font-family: Montserrat;
+                outline: none;
+                cursor: pointer;
+            }
+
+                .login-block button:hover {
+                    background: #ff7b81;
+                }
+    </style>
+</head>
+
+<body>
+
+    <div class="logo"></div>
+    <div class="login-block">
+        <section id="loginForm">
+            @using (Html.BeginForm())
+            {
+                @Html.AntiForgeryToken()
+                <fieldset>
+                    <legend>DScheduler - Log in Form</legend>
+                    <ol>
+                        <li class="nostyle">
+                            @Html.LabelFor(m => m.UserName)
+                            @Html.TextBoxFor(m => m.UserName)
+                            @Html.ValidationMessageFor(m => m.UserName)
+                        </li>
+                        <li class="nostyle">
+                            @Html.LabelFor(m => m.Password)
+                            @Html.PasswordFor(m => m.Password)
+                            @Html.ValidationMessageFor(m => m.Password)
+                        </li>
+                    </ol>
+                    <input type="submit" value="Log in" />
+                </fieldset>
+            }
+        </section>
+    </div>
+</body>
+
+</html>

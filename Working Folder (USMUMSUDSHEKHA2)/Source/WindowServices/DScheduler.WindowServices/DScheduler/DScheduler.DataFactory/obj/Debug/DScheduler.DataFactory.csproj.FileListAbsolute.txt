@@ -1,0 +1,12 @@
+c:\users\astiwari\documents\visual studio 2012\Projects\DScheduler\DScheduler.DataFactory\bin\Debug\DScheduler.DataFactory.dll
+c:\users\astiwari\documents\visual studio 2012\Projects\DScheduler\DScheduler.DataFactory\bin\Debug\DScheduler.DataFactory.pdb
+c:\users\astiwari\documents\visual studio 2012\Projects\DScheduler\DScheduler.DataFactory\obj\Debug\DScheduler.DataFactory.dll
+c:\users\astiwari\documents\visual studio 2012\Projects\DScheduler\DScheduler.DataFactory\obj\Debug\DScheduler.DataFactory.pdb
+C:\DSchedule\DScheduler.WindowServices\DScheduler\DScheduler.DataFactory\bin\Debug\DScheduler.DataFactory.dll
+C:\DSchedule\DScheduler.WindowServices\DScheduler\DScheduler.DataFactory\bin\Debug\DScheduler.DataFactory.pdb
+C:\DSchedule\DScheduler.WindowServices\DScheduler\DScheduler.DataFactory\obj\Debug\DScheduler.DataFactory.dll
+C:\DSchedule\DScheduler.WindowServices\DScheduler\DScheduler.DataFactory\obj\Debug\DScheduler.DataFactory.pdb
+C:\DSchedule\Working Folder\Source\WindowServices\DScheduler.WindowServices\DScheduler\DScheduler.DataFactory\bin\Debug\DScheduler.DataFactory.dll
+C:\DSchedule\Working Folder\Source\WindowServices\DScheduler.WindowServices\DScheduler\DScheduler.DataFactory\bin\Debug\DScheduler.DataFactory.pdb
+C:\DSchedule\Working Folder\Source\WindowServices\DScheduler.WindowServices\DScheduler\DScheduler.DataFactory\obj\Debug\DScheduler.DataFactory.dll
+C:\DSchedule\Working Folder\Source\WindowServices\DScheduler.WindowServices\DScheduler\DScheduler.DataFactory\obj\Debug\DScheduler.DataFactory.pdb

@@ -1,0 +1,154 @@
+﻿@{
+    ViewBag.Title = "User Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@model DSchedule.Contracts.Models.UserProfileCollection
+<h2>User Accounts</h2>
+
+<html>
+<head>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+    @Scripts.Render("~/bundles/jquery")
+    <link href="@Url.Content("~/Content/Gridmvc.css")" rel="stylesheet" />
+    <link href="@Url.Content("~/Content/bootstrap.min.css")" rel="stylesheet" />
+    <script src="@Url.Content("~/Scripts/gridmvc.min.js")"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $(function () {
+                pageGrids.ordersGrid.onRowSelect(function (e) {
+                    $("#hdnUprocId").val(e.row.UprocID);
+                    $("#username").val(e.row.UserName);
+                    $("#firstname").val(e.row.FirstName);
+                    $("#lastname").val(e.row.LastName);
+                    $("#email").val(e.row.Email);
+                    $("#accounttype").val(e.row.AccountType);
+                    //$("#organization").val(e.row.Command);
+                });
+                $('#btnCancel').click(function () {
+                    debugger;
+                    $.ajax({
+                        url: '@Url.Content("~/Home}/Index")',
+                        type: 'GET'
+                    });
+                });
+            });
+        });
+
+
+    </script>
+</head>
+<body>
+    <div class="container-fluid" id="UprocDetails" style="height:300px">
+        @using GridMvc.Html
+
+        @Html.Grid(Model.UserProfiles).Named("ordersGrid").Columns(columns =>
+   {
+       columns.Add(c => c.FirstName).Titled("First Name").Filterable(true);
+       columns.Add(c => c.LastName).Titled("Last Name").Filterable(true);
+       columns.Add(c => c.UserName).Titled("User Name").Filterable(true);
+       columns.Add(c => c.Email).Titled("Email Id").Filterable(true);
+       columns.Add(c => c.AccountType).Titled("Account Type").Filterable(true);
+       columns.Add(c => c.IsActive).Titled("IsActive").Filterable(true);
+       //columns.Add()
+       //.Encoded(false)
+       //.Sanitized(false)
+       //.SetWidth(30)
+       //.RenderValueAs(o => Html.ActionLink("Edit", "EditUser", "UserAccountsController"
+       //    , new { id = o.LoginID }, new { @class = "saveButton", onclick = "return false;" }));
+
+
+
+   }).WithPaging(3).Sortable(true)
+
+    </div>
+
+    <div class="container-fluid">
+        <h3>Create User</h3>
+        @using (Html.BeginForm("CreateUser", "UserAccounts"))
+        {
+            @Html.AntiForgeryToken()
+            @Html.ValidationSummary()
+            <div class="form-horizontal well">
+                <div class="form-group">
+                    <div class="col-md-1">
+                        @Html.LabelFor(model => Model.Default.UserName)
+                    </div>
+                    <div class="col-md-2">
+                        @Html.TextBoxFor(model => Model.Default.UserName, new {id="username", @class = "form-control" })
+                        @Html.ValidationMessageFor(model => Model.Default.UserName)
+                    </div>
+                    <div class="col-md-1">
+                        @Html.LabelFor(model => model.Default.FirstName)
+                    </div>
+                    <div class="col-md-2">
+                        @Html.TextBoxFor(model => model.Default.FirstName, new {id="firstname", @class = "form-control" })
+                        @Html.ValidationMessageFor(model => model.Default.FirstName)
+                    </div>
+                    <div class="col-md-1">
+                        @Html.LabelFor(model => model.Default.LastName)
+                    </div>
+                    <div class="col-md-2">
+                        @Html.TextBoxFor(model => model.Default.LastName, new {id="lastname", @class = "form-control" })
+                        @Html.ValidationMessageFor(model => model.Default.LastName)
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-md-1">
+                        @Html.LabelFor(model => model.Default.Email)
+                    </div>
+                    <div class="col-md-2">
+                        @Html.TextBoxFor(model => model.Default.Email, new {id="email", @class = "form-control" })
+                        @Html.ValidationMessageFor(model => model.Default.Email)
+                    </div>
+                    <div class="col-md-1">
+                        @Html.LabelFor(model => model.Default.AccountType)
+                    </div>
+                    <div class="col-md-2">
+                        @Html.DropDownListFor(model => model.Default.AccountType,
+                                        (SelectList)ViewBag.AccountTypes, new {id="accounttype", @class = "form-control" })
+                    </div>
+                    <div class="col-md-1">
+                        @Html.LabelFor(model => model.Default.Organization)
+                    </div>
+                    <div class="col-md-2">
+                        @Html.DropDownListFor(model => model.Default.Organization,
+                                        (SelectList)ViewBag.AccountTypes, new {id="organization", @class = "form-control" })
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-md-1">
+                        @Html.LabelFor(model => model.Default.Password)
+                    </div>
+                    <div class="col-md-2">
+                        @Html.PasswordFor(model => model.Default.Password, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(model => model.Default.Password)
+                    </div>
+                    <div class="col-md-1">
+                        @Html.LabelFor(model => model.Default.ConfirmPassword)
+                    </div>
+                    <div class="col-md-2">
+                        @Html.PasswordFor(model => model.Default.ConfirmPassword, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(model => model.Default.ConfirmPassword)
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-md-2">
+                        <input type="button" value="New User" name="btnNewUproc" class="btn btn-primary" />
+                    </div>
+                    <div class="col-md-2">
+                        <input name="btnSave" type="submit" value="Save" class="btn btn-primary" />
+                    </div>
+                    <div class="col-md-2">
+                        <input id="btnCancel" type="button" value="Cancel" class="btn btn-primary" />
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+</body>
+</html>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

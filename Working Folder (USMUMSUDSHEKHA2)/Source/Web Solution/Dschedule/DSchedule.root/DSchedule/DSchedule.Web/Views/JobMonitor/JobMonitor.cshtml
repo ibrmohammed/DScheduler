@@ -1,0 +1,63 @@
+﻿@{
+    ViewBag.Title = "Job Monitor";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@model DSchedule.Contracts.Models.JobMonitorModel
+<h2>Job Monitor</h2>
+<link href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.9.2/themes/ui-darkness/jquery-ui.css" rel="stylesheet">
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+<script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.9.2/jquery-ui.min.js"></script>
+<html>
+<head title="test">
+    <title></title>
+</head>
+<body>
+    <div id="myJobMonitorDetails" style="height:350px; width:100%">
+        @Html.Partial("JobMonitorPartial", Model)
+    </div>
+    <div class="dialog"></div>
+    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <div class="modal-dialog modal-lg" role="img">
+            <div class="modal-content registration-modal">
+                <div class="modal-body row">
+                    <div class="col" id="myModalContent" style="height: 250px; width: auto ;max-height: 300px; padding: 1px 1px 1px 1px;">
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+    @Scripts.Render("~/Content/Gridmvc.css")
+    <script src="@Url.Content("~/Scripts/gridmvc.min.js")"></script>;
+
+    <script type="text/javascript">
+
+        $(function () {
+            setInterval(function () { $('#myJobMonitorDetails').load('/JobMonitor/GetJobMonitorDetails'); }, 60000); // every 1 mins
+        });
+    </script>
+
+    <script>
+        $(function () {
+            pageGrids.JobMonitorGrid.onRowSelect(function (e) {
+                d(e.row.UprocID, e.row.SessionID);
+            });
+        });
+
+        function d(uprocID, sessionID) {
+            // alert("am here" + uprocID + " " + sessionID);
+            var url = "/JobMonitor/GetUProcDetailsByID/";
+            $.post(url, { uprocID: uprocID, sessionID: sessionID })
+             .done(function (response) {
+                 //  alert("#2");
+                 $("#myModalContent").html(response);
+                 $("#myModal").modal('show')
+             });
+        }
+    </script>
+}
+

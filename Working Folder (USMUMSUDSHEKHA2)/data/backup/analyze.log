@@ -1,0 +1,8 @@
+Visual SourceSafe Analyze Version 8.0
+Copyright (C) Microsoft Corporation. All rights reserved.
+
+"C:\Program Files (x86)\Microsoft Visual SourceSafe\analyze.exe" -x -v3 "C:\sudhanshu.shekhar\Working Folder\data"
+
+Database analysis in progress @ 12/14/16; 8:03p.
+Analysis complete @ 12/14/16; 8:03p
+	No errors or inconsistencies found.

@@ -1,0 +1,291 @@
+﻿@{
+    ViewBag.Title = "Job Monitor";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@model DSchedule.Contracts.Models.JobMonitorModel
+@{
+    var LstEnvironments = (Model.EnvironmentList != null && Model.EnvironmentList.Count > 0) ? Model.EnvironmentList : new List<DSchedule.Contracts.Models.Environment>();
+    var lstJobActions = (Model.JobActionTypes != null && Model.JobActionTypes.Count > 0) ? Model.JobActionTypes : new List<DSchedule.Contracts.Models.ReferenceData>();
+
+}
+<h2>Job Monitor</h2>
+
+
+<html>
+<head title="test">
+
+</head>
+<body>
+    <div class="container-fluid" id="myJobMonitorDetails">
+        @Html.Partial("JobMonitorPartial", Model)
+    </div>
+    <div class="dialog"></div>
+    @*<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <div class="modal-dialog modal-lg" role="img">
+            <div class="modal-content registration-modal">
+                <div class="modal-body row">
+                    <div class="col" id="myModalContent" style="height: 250px; width: auto ;max-height: 300px; padding: 1px 1px 1px 1px;">
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>*@
+    <!--Modal-->
+    <div class="modal fade" id="myModal" role="dialog">
+        <div class="modal-dialog">
+            <!--Modal Content-->
+            <div class="modal-content">
+                @*<div class="modal-header">
+                    <h4 class="modal-title">Session Details</h4>
+                </div>
+                <div class="modal-body">
+                    <p>sample text</p>
+                </div>
+                <div class="modal-footer">
+                    <p>sample footer</p>
+                </div>*@
+            </div>
+        </div>
+    </div>
+
+    <br />
+    <br />
+    <div class="container-fluid">
+        <h3>Search Jobs</h3>
+        <div class="form-horizontal well">
+            <div class="form-group">
+                <label for="uprocName" class="col-md-1">Uproc Name</label>
+                <div class="col-md-2">
+                    <input type="text" class="form-control" id="uprocName" />
+                </div>
+
+                <label for="sessionName" class="col-md-1">Session</label>
+                <div class="col-md-2">
+                    <input type="text" class="form-control" id="sessionName" />
+                </div>
+
+                <label for="jobType" class="col-md-1">Job Type</label>
+                <div class="col-md-2">
+                    <input type="text" class="form-control" id="jobType" />
+                </div>
+
+                <label for="rundate-datepicker" class="col-md-1">Run Date</label>
+                <div class="col-md-2">
+                    <div class="row">
+                        <div class="col-md-11">
+                            <input type="text" class="form-control" id="rundate-datepicker" />
+                        </div>
+                        <div class="col-md-3">
+                            <span class="input-group-addon" id="btn" style="cursor:pointer;">
+                                <span class="glyphicon glyphicon-calendar"></span>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="environment" class="col-md-1">Environment</label>
+                <div class="col-md-2">
+                    @Html.DropDownListFor(model => Model.EnvironmentID, new SelectList(LstEnvironments, "EnvironmentID", "EnvironmentName"), new { @Class = "form-control", @Id = "environment",Name="ddlEnvironment" })
+                </div>
+
+                <label for="node" class="col-md-1">Node</label>
+                <div class="col-md-2">
+                    <input type="text" class="form-control" id="node" />
+                </div>
+
+                <label for="createdBy" class="col-md-1">Created By</label>
+                <div class="col-md-2">
+                    <input type="text" class="form-control" id="createdBy" />
+                </div>
+
+                <label for="createdDate-datepicker" class="col-md-1">Created Date</label>
+                <div class="col-md-2">
+                    @*<input type="text" class="form-control" id="createdDate-datepicker" />*@
+                    <div class="row">
+                        <div class="col-md-11">
+                            <input type="text" class="form-control" id="createdDate-datepicker" />
+                        </div>
+                        <div class="col-md-3">
+                            <span class="input-group-addon" id="btnCreatedDate" style="cursor:pointer;">
+                                <span class="glyphicon glyphicon-calendar"></span>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="status" class="col-md-1">Status</label>
+                <div class="col-md-2">
+                    @Html.DropDownListFor(model => Model.UProcStatus, new SelectList(lstJobActions, "RefValue", "RefDescription"), "-- select --", new { @Class = "form-control", @Id = "status",Name= "UProcStatus" })
+                </div>
+            </div>
+            @*<div class="form-group">
+                    <input type="text" id="datepicker" class="form-control" />
+                </div>*@
+
+            <br />
+            <div class="form-group">
+                <div class="col-md-2">
+                    <button type="button" class="btn btn-primary" id="btnJobMonitorSearch">Search</button>
+                </div>
+                <div class="col-md-2">
+                    <button type="button" class="btn btn-primary" id="btnJobMonitorReset">Reset</button>
+                </div>
+                <div class="col-md-2">
+                    <button type="button" class="btn btn-primary" id="btnJobMonitorCancel">Cancel</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+</body>
+</html>
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+    <link href="@Url.Content("~/Content/Gridmvc.css")" rel="stylesheet" />
+    <script src="@Url.Content("~/Scripts/gridmvc.min.js")"></script>
+
+    <script type="text/javascript">
+        $(function () {
+              setInterval(function () { $('#myJobMonitorDetails').load('/JobMonitor/GetJobMonitorDetails'); }, 60000); // every 1 mins
+        });
+    </script>
+
+    <script>
+        $(function () {
+            //pageGrids.JobMonitorGrid.onRowSelect(function (e) {
+            //     d(e.row.UprocID, e.row.SessionID);
+
+            //});
+
+            $(".tablerow").on("click", function () {
+                $(this).closest('table').find('.tablerow.active').removeClass('active');
+                $(this).addClass("active");
+
+                var uprocId = $(this).find("td.uprocId").text();
+                var sessionId = $(this).find("td.sessionId").text();
+               // $("#myModal").modal('show');
+                 displayPopUp(uprocId, sessionId);
+
+            });
+
+            $(".leftnav").on("click", function () {
+                $(this).closest('leftnavbar').find('.leftnav.active').removeClass('active');
+                $(this).addClass("active");
+            });
+
+
+
+
+            $("#rundate-datepicker").datepicker({
+                //showOn: "button",
+                //buttonImage: "/Images/CalenderGrey.png",
+                //buttonImageOnly: true,
+                changeMonth: true,
+                changeYear: true
+            });
+
+            $('#btn').click(function () {
+                $("#rundate-datepicker").focus();
+            });
+
+            $("#createdDate-datepicker").datepicker({
+                changeMonth: true,
+                changeYear: true
+            });
+
+            $('#btnCreatedDate').click(function () {
+                $("#createdDate-datepicker").focus();
+            });
+
+
+
+
+            function displayPopUp(uprocID, sessionID) {
+                // alert("am here" + uprocID + " " + sessionID);
+                var url = "/JobMonitor/GetUProcDetailsByID/";
+                $.post(url, { uprocID: uprocID, sessionID: sessionID })
+                 .done(function (response) {
+                     
+                    // $("#myModalContent").html(response);
+                     $(".modal-content").html(response);
+                     $("#myModal").modal('show');
+                 });
+            }
+
+            $("#btnJobMonitorSearch").on("click",function () {
+                
+                var uProcName = $("#uprocName").val();
+                var sessionName = $("#sessionName").val();
+                var jobrunDate = $("#rundate-datepicker").datepicker("getDate") != null ? ($("#rundate-datepicker").datepicker("getDate")).toJSON() : null;
+                var selectedEnvironment = parseInt($("select[name='ddlEnvironment'] option:selected").val());
+                var nodeName = $("#node").val();
+                var createdBy = $("#createdBy").val();
+                var createdDate = $("#createdDate-datepicker").datepicker("getDate") != null ? ($("#createdDate-datepicker").datepicker("getDate")).toJSON() : null;
+                var uprocstatus = $("select[name='UProcStatus'] option:selected").val();
+
+                var myObj = new Object();
+                myObj.UprocName = uProcName;
+                myObj.SessionName = sessionName;
+                myObj.JobRunDate = jobrunDate;
+                myObj.EnvironmentName = selectedEnvironment;
+                myObj.NodeName = nodeName;
+                myObj.CreatedBy = createdBy;
+                myObj.CreatedDateTime = createdDate;
+                myObj.JobStatus = uprocstatus;
+               
+                $.ajax({
+                    url: "/JobMonitor/SearchUprocDetails/",
+                    type: 'POST',
+                    data: { SearchCriteria:myObj },
+                    success: function (data) {
+                        $("#myJobMonitorDetails").html(data);
+
+                    }
+
+                });
+
+            });
+
+            $("#btnJobMonitorReset").on("click", function () {
+
+                $.ajax({
+                    url: "/JobMonitor/GetJobMonitorDetails/",
+                    type: 'POST',
+                   // data: { SearchCriteria: myObj },
+                    success: function (data) {
+                        $("#myJobMonitorDetails").html(data);
+
+                    }
+
+                });
+                Resetform();
+
+            });
+
+            $("#btnJobMonitorCancel").on("click", function () {
+                Resetform();
+
+            });
+
+            function Resetform()
+            {
+                $("#uprocName").val('');
+                $("#sessionName").val('');
+                $('#rundate-datepicker').val('');
+                $("#node").val('');
+                $("#createdBy").val('');
+                $("#createdDate-datepicker").val('');
+                $('select[name*="UProcStatus"]').val('');
+                $("#jobType").val('');
+
+            }
+
+
+        });
+    </script>
+}
+

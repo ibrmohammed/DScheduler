@@ -1,0 +1,4 @@
+C:\DSchedule\DScheduler.WindowServices\DScheduler\DScheduler.Logging\bin\Debug\DScheduler.Logging.dll
+C:\DSchedule\DScheduler.WindowServices\DScheduler\DScheduler.Logging\bin\Debug\DScheduler.Logging.pdb
+C:\DSchedule\DScheduler.WindowServices\DScheduler\DScheduler.Logging\obj\Debug\DScheduler.Logging.dll
+C:\DSchedule\DScheduler.WindowServices\DScheduler\DScheduler.Logging\obj\Debug\DScheduler.Logging.pdb

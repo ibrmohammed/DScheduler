@@ -1,0 +1,254 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="DScheduleModelStoreContainer" CdmEntityContainer="DScheduleEntities">
+    <EntitySetMapping Name="TDependencies">
+      <EntityTypeMapping TypeName="DScheduleModel.TDependency">
+        <MappingFragment StoreEntitySet="TDependencies">
+          <ScalarProperty Name="DependentID" ColumnName="DependentID" />
+          <ScalarProperty Name="SessionID" ColumnName="SessionID" />
+          <ScalarProperty Name="UprocID" ColumnName="UprocID" />
+          <ScalarProperty Name="SequenceNumber" ColumnName="SequenceNumber" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="CreatedDateTime" ColumnName="CreatedDateTime" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="UpdatedDateTime" ColumnName="UpdatedDateTime" />
+          <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TEnvironments">
+      <EntityTypeMapping TypeName="DScheduleModel.TEnvironment">
+        <MappingFragment StoreEntitySet="TEnvironment">
+          <ScalarProperty Name="EnvironmentID" ColumnName="EnvironmentID" />
+          <ScalarProperty Name="NodeID" ColumnName="NodeID" />
+          <ScalarProperty Name="EnvironmentName" ColumnName="EnvironmentName" />
+          <ScalarProperty Name="EnvironmentPath" ColumnName="EnvironmentPath" />
+          <ScalarProperty Name="CreatedDateTime" ColumnName="CreatedDateTime" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="UpdatedDateTime" ColumnName="UpdatedDateTime" />
+          <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TJobMonitors">
+      <EntityTypeMapping TypeName="DScheduleModel.TJobMonitor">
+        <MappingFragment StoreEntitySet="TJobMonitor">
+          <ScalarProperty Name="JobID" ColumnName="JobID" />
+          <ScalarProperty Name="SessionID" ColumnName="SessionID" />
+          <ScalarProperty Name="UprocID" ColumnName="UprocID" />
+          <ScalarProperty Name="EnvironmentID" ColumnName="EnvironmentID" />
+          <ScalarProperty Name="NodeID" ColumnName="NodeID" />
+          <ScalarProperty Name="ScheduleDateTime" ColumnName="ScheduleDateTime" />
+          <ScalarProperty Name="StartedDateTime" ColumnName="StartedDateTime" />
+          <ScalarProperty Name="CompletedDateTime" ColumnName="CompletedDateTime" />
+          <ScalarProperty Name="UProcStatus" ColumnName="UProcStatus" />
+          <ScalarProperty Name="CreatedDateTime" ColumnName="CreatedDateTime" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="UpdatedDateTime" ColumnName="UpdatedDateTime" />
+          <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TJobRules">
+      <EntityTypeMapping TypeName="DScheduleModel.TJobRule">
+        <MappingFragment StoreEntitySet="TJobRule">
+          <ScalarProperty Name="JobRuleID" ColumnName="JobRuleID" />
+          <ScalarProperty Name="ActivityTypeID" ColumnName="ActivityTypeID" />
+          <ScalarProperty Name="SessionID" ColumnName="SessionID" />
+          <ScalarProperty Name="UprocID" ColumnName="UprocID" />
+          <ScalarProperty Name="RecurrenceID" ColumnName="RecurrenceID" />
+          <ScalarProperty Name="OutageID" ColumnName="OutageID" />
+          <ScalarProperty Name="SessionUprocName" ColumnName="SessionUprocName" />
+          <ScalarProperty Name="JobStartTime" ColumnName="JobStartTime" />
+          <ScalarProperty Name="Recurrence" ColumnName="Recurrence" />
+          <ScalarProperty Name="CreatedDateTime" ColumnName="CreatedDateTime" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="UpdatedDateTime" ColumnName="UpdatedDateTime" />
+          <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TLogins">
+      <EntityTypeMapping TypeName="DScheduleModel.TLogin">
+        <MappingFragment StoreEntitySet="TLogin">
+          <ScalarProperty Name="LoginID" ColumnName="LoginID" />
+          <ScalarProperty Name="AccountTypeID" ColumnName="AccountTypeID" />
+          <ScalarProperty Name="UserName" ColumnName="UserName" />
+          <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+          <ScalarProperty Name="LastName" ColumnName="LastName" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="Password" ColumnName="Password" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="Organization" ColumnName="Organization" />
+          <ScalarProperty Name="CreatedDateTime" ColumnName="CreatedDateTime" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="UpdatedDateTime" ColumnName="UpdatedDateTime" />
+          <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TOutages">
+      <EntityTypeMapping TypeName="DScheduleModel.TOutage">
+        <MappingFragment StoreEntitySet="TOutage">
+          <ScalarProperty Name="OutageID" ColumnName="OutageID" />
+          <ScalarProperty Name="JobRuleID" ColumnName="JobRuleID" />
+          <ScalarProperty Name="CreatedDateTime" ColumnName="CreatedDateTime" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="UpdatedDateTime" ColumnName="UpdatedDateTime" />
+          <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TOutageDetails">
+      <EntityTypeMapping TypeName="DScheduleModel.TOutageDetail">
+        <MappingFragment StoreEntitySet="TOutageDetails">
+          <ScalarProperty Name="OutageDetailID" ColumnName="OutageDetailID" />
+          <ScalarProperty Name="OutageID" ColumnName="OutageID" />
+          <ScalarProperty Name="OutageName" ColumnName="OutageName" />
+          <ScalarProperty Name="OutageDate" ColumnName="OutageDate" />
+          <ScalarProperty Name="OutageStartTime" ColumnName="OutageStartTime" />
+          <ScalarProperty Name="OutageEndTime" ColumnName="OutageEndTime" />
+          <ScalarProperty Name="CreatedDateTime" ColumnName="CreatedDateTime" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="UpdatedDateTime" ColumnName="UpdatedDateTime" />
+          <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TRecurrencePatterns">
+      <EntityTypeMapping TypeName="DScheduleModel.TRecurrencePattern">
+        <MappingFragment StoreEntitySet="TRecurrencePattern">
+          <ScalarProperty Name="RecurrencePatternID" ColumnName="RecurrencePatternID" />
+          <ScalarProperty Name="RecurrenceID" ColumnName="RecurrenceID" />
+          <ScalarProperty Name="RecPattTypeID" ColumnName="RecPattTypeID" />
+          <ScalarProperty Name="NoOfDays" ColumnName="NoOfDays" />
+          <ScalarProperty Name="NoOfMonths" ColumnName="NoOfMonths" />
+          <ScalarProperty Name="NoOfYears" ColumnName="NoOfYears" />
+          <ScalarProperty Name="WeekName" ColumnName="WeekName" />
+          <ScalarProperty Name="WeekDayName" ColumnName="WeekDayName" />
+          <ScalarProperty Name="MonthName" ColumnName="MonthName" />
+          <ScalarProperty Name="CreatedDateTime" ColumnName="CreatedDateTime" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="UpdatedDateTime" ColumnName="UpdatedDateTime" />
+          <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TRecurrenceRanges">
+      <EntityTypeMapping TypeName="DScheduleModel.TRecurrenceRange">
+        <MappingFragment StoreEntitySet="TRecurrenceRange">
+          <ScalarProperty Name="RecurrenceRangeID" ColumnName="RecurrenceRangeID" />
+          <ScalarProperty Name="RecRangeTypeID" ColumnName="RecRangeTypeID" />
+          <ScalarProperty Name="StartDateTime" ColumnName="StartDateTime" />
+          <ScalarProperty Name="EndDateTime" ColumnName="EndDateTime" />
+          <ScalarProperty Name="OccurenceCount" ColumnName="OccurenceCount" />
+          <ScalarProperty Name="CreatedDateTime" ColumnName="CreatedDateTime" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="UpdatedDateTime" ColumnName="UpdatedDateTime" />
+          <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TRefs">
+      <EntityTypeMapping TypeName="DScheduleModel.TRef">
+        <MappingFragment StoreEntitySet="TRef">
+          <ScalarProperty Name="RefID" ColumnName="RefID" />
+          <ScalarProperty Name="RefName" ColumnName="RefName" />
+          <ScalarProperty Name="RefValue" ColumnName="RefValue" />
+          <ScalarProperty Name="RefDescription" ColumnName="RefDescription" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="IsVisible" ColumnName="IsVisible" />
+          <ScalarProperty Name="CreatedDateTime" ColumnName="CreatedDateTime" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="UpdatedDateTime" ColumnName="UpdatedDateTime" />
+          <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TReports">
+      <EntityTypeMapping TypeName="DScheduleModel.TReport">
+        <MappingFragment StoreEntitySet="TReports">
+          <ScalarProperty Name="ReportID" ColumnName="ReportID" />
+          <ScalarProperty Name="TemplateID" ColumnName="TemplateID" />
+          <ScalarProperty Name="TemplateName" ColumnName="TemplateName" />
+          <ScalarProperty Name="CreatedDateTime" ColumnName="CreatedDateTime" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="UpdatedDateTime" ColumnName="UpdatedDateTime" />
+          <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TSessions">
+      <EntityTypeMapping TypeName="DScheduleModel.TSession">
+        <MappingFragment StoreEntitySet="TSession">
+          <ScalarProperty Name="SessionID" ColumnName="SessionID" />
+          <ScalarProperty Name="EnvironmentID" ColumnName="EnvironmentID" />
+          <ScalarProperty Name="AccountTypeID" ColumnName="AccountTypeID" />
+          <ScalarProperty Name="SessionName" ColumnName="SessionName" />
+          <ScalarProperty Name="EnvironmentName" ColumnName="EnvironmentName" />
+          <ScalarProperty Name="CreatedDateTime" ColumnName="CreatedDateTime" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="UpdatedDateTime" ColumnName="UpdatedDateTime" />
+          <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TTemplates">
+      <EntityTypeMapping TypeName="DScheduleModel.TTemplate">
+        <MappingFragment StoreEntitySet="TTemplate">
+          <ScalarProperty Name="TemplateID" ColumnName="TemplateID" />
+          <ScalarProperty Name="TemplateName" ColumnName="TemplateName" />
+          <ScalarProperty Name="CreatedDateTime" ColumnName="CreatedDateTime" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="UpdatedDateTime" ColumnName="UpdatedDateTime" />
+          <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TUprocs">
+      <EntityTypeMapping TypeName="DScheduleModel.TUproc">
+        <MappingFragment StoreEntitySet="TUproc">
+          <ScalarProperty Name="UprocID" ColumnName="UprocID" />
+          <ScalarProperty Name="JobTypeID" ColumnName="JobTypeID" />
+          <ScalarProperty Name="EnvironmentID" ColumnName="EnvironmentID" />
+          <ScalarProperty Name="AccountTypeID" ColumnName="AccountTypeID" />
+          <ScalarProperty Name="UprocName" ColumnName="UprocName" />
+          <ScalarProperty Name="EnvironmentName" ColumnName="EnvironmentName" />
+          <ScalarProperty Name="FolderPath" ColumnName="FolderPath" />
+          <ScalarProperty Name="Command" ColumnName="Command" />
+          <ScalarProperty Name="CreatedDateTime" ColumnName="CreatedDateTime" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="UpdatedDateTime" ColumnName="UpdatedDateTime" />
+          <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="DScheduler_uspInsertDataIntoJobMonitor" FunctionName="DScheduleModel.Store.DScheduler_uspInsertDataIntoJobMonitor" />
+    <EntitySetMapping Name="TJobActions">
+      <EntityTypeMapping TypeName="DScheduleModel.TJobAction">
+        <MappingFragment StoreEntitySet="TJobAction">
+          <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
+          <ScalarProperty Name="UpdatedDateTime" ColumnName="UpdatedDateTime" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="CreatedDateTime" ColumnName="CreatedDateTime" />
+          <ScalarProperty Name="JobActionTypeID" ColumnName="JobActionTypeID" />
+          <ScalarProperty Name="JobID" ColumnName="JobID" />
+          <ScalarProperty Name="JobActionID" ColumnName="JobActionID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TNodes">
+      <EntityTypeMapping TypeName="DScheduleModel.TNode">
+        <MappingFragment StoreEntitySet="TNode">
+          <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
+          <ScalarProperty Name="UpdatedDateTime" ColumnName="UpdatedDateTime" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="CreatedDateTime" ColumnName="CreatedDateTime" />
+          <ScalarProperty Name="NodePath" ColumnName="NodePath" />
+          <ScalarProperty Name="NodeName" ColumnName="NodeName" />
+          <ScalarProperty Name="NodeID" ColumnName="NodeID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

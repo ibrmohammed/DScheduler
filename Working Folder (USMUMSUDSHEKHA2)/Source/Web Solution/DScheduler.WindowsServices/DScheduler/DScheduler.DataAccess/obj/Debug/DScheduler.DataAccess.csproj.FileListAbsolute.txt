@@ -1,0 +1,8 @@
+c:\users\astiwari\documents\visual studio 2012\Projects\DScheduler\DScheduler.DataAccess\bin\Debug\DScheduler.DataAccess.dll
+c:\users\astiwari\documents\visual studio 2012\Projects\DScheduler\DScheduler.DataAccess\bin\Debug\DScheduler.DataAccess.pdb
+c:\users\astiwari\documents\visual studio 2012\Projects\DScheduler\DScheduler.DataAccess\obj\Debug\DScheduler.DataAccess.dll
+c:\users\astiwari\documents\visual studio 2012\Projects\DScheduler\DScheduler.DataAccess\obj\Debug\DScheduler.DataAccess.pdb
+C:\DSchedule\DScheduler.WindowServices\DScheduler\DScheduler.DataAccess\bin\Debug\DScheduler.DataAccess.dll
+C:\DSchedule\DScheduler.WindowServices\DScheduler\DScheduler.DataAccess\bin\Debug\DScheduler.DataAccess.pdb
+C:\DSchedule\DScheduler.WindowServices\DScheduler\DScheduler.DataAccess\obj\Debug\DScheduler.DataAccess.dll
+C:\DSchedule\DScheduler.WindowServices\DScheduler\DScheduler.DataAccess\obj\Debug\DScheduler.DataAccess.pdb

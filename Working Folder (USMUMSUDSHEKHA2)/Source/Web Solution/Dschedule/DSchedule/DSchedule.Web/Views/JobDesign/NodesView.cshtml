@@ -1,0 +1,74 @@
+﻿
+@{
+    ViewBag.Title = "NodesView";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>DSchedule Nodes</h2>
+
+<html>
+<head>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+    @Scripts.Render("~/bundles/jquery")
+    <link href="@Url.Content("~/Content/Gridmvc.css")" rel="stylesheet" />
+    <link href="@Url.Content("~/Content/bootstrap.min.css")" rel="stylesheet" />
+    <script src="@Url.Content("~/Scripts/gridmvc.min.js")"></script>
+    <script src="@Url.Content("~/Scripts/Node.js")"></script>
+</head>
+<body>
+    <div class="container-fluid" style="height:300px">
+        @model DSchedule.Contracts.Models.NodesModel
+
+        @using GridMvc.Html
+        @*@{
+                ViewBag.Title = "Details";
+            }
+            @{
+                Layout = null;
+            }*@
+
+        @Html.Grid((List<DSchedule.Contracts.Models.Node>)Model.NodesList).Named("nodeGrid").Columns(columns =>
+   {
+       columns.Add(c => c.NodeID, true).Titled("Node ID").Filterable(false).Css("style: Hide");
+       columns.Add(c => c.NodeName).Titled("Node Name").Filterable(true);
+       columns.Add(c => c.NodePath).Titled("Path").Filterable(true);
+       columns.Add(c => c.CreatedDateTime).Titled("Added Date").Filterable(true);
+   }).WithPaging(7).Sortable(true)
+    </div>
+    <div class="container-fluid">
+        <h3>Create Node</h3>
+        @using (Html.BeginForm("SaveNode", "JobDesign", FormMethod.Post, new { model = Model }))
+        { 
+            @Html.AntiForgeryToken()
+            <div class="form-horizontal well">
+                <div class="form-group">
+                    <label for="NodeName" class="col-md-1">Node Name</label>
+                    <div class="col-md-2">
+                        @Html.TextBoxFor(model => Model.NodeName, new { @Class = "form-control", @id = "NodeName" })
+                        @Html.HiddenFor(model => Model.NodeID, new { @id = "NodeID" })
+                    </div>
+                    <label for="Path" class="col-md-1">Path</label>
+                    <div class="col-md-2">
+                        @Html.TextBoxFor(model => Model.Path, new { @Class = "form-control", type = "File", @id = "Path" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="col-md-2">
+                        <input type="button" value="New Node" class="btn btn-primary" name="btnNewNode" onclick="NewNode()" />
+                    </div>
+                    <div class="col-md-2">
+                        <input name="btnSave" class="btn btn-primary" type="submit" value="Save" />
+                    </div>
+                    <div class="col-md-2">
+                        <input id="btnCancel" class="btn btn-primary" type="submit" value="Cancel" />
+                    </div>
+                </div>
+
+            </div>
+        }
+    </div>
+</body>
+</html>
+

@@ -1,0 +1,74 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.25420.1
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DSchedule.Web", "DSchedule.Web\DSchedule.Web.csproj", "{EF8640B4-ADA8-4613-B7E4-446646E0920D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DSchedule.Common", "DSchedule.Common\DSchedule.Common.csproj", "{241F0397-0FA1-4545-A7D1-0F5C6ADDEAAE}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DSchedule.Utilities", "DSchedule.Utilities\DSchedule.Utilities.csproj", "{A77D3C95-7E9B-4D17-843A-8F3A535E34C4}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DSchedule.Data", "DSchedule.Data\DSchedule.Data.csproj", "{950DF4C9-F05A-47A6-9E31-AC880CF60653}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DSchedule.BusinessComponent", "DSchedule.BusinessComponent\DSchedule.BusinessComponent.csproj", "{6212140B-AF49-4586-836A-E772AC929DA6}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DSchedule.Contracts", "DSchedule.Contracts\DSchedule.Contracts.csproj", "{59188602-7006-4338-9511-9468D4A4BB04}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{EF8640B4-ADA8-4613-B7E4-446646E0920D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EF8640B4-ADA8-4613-B7E4-446646E0920D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EF8640B4-ADA8-4613-B7E4-446646E0920D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EF8640B4-ADA8-4613-B7E4-446646E0920D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{241F0397-0FA1-4545-A7D1-0F5C6ADDEAAE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{241F0397-0FA1-4545-A7D1-0F5C6ADDEAAE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{241F0397-0FA1-4545-A7D1-0F5C6ADDEAAE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{241F0397-0FA1-4545-A7D1-0F5C6ADDEAAE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A77D3C95-7E9B-4D17-843A-8F3A535E34C4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A77D3C95-7E9B-4D17-843A-8F3A535E34C4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A77D3C95-7E9B-4D17-843A-8F3A535E34C4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A77D3C95-7E9B-4D17-843A-8F3A535E34C4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{950DF4C9-F05A-47A6-9E31-AC880CF60653}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{950DF4C9-F05A-47A6-9E31-AC880CF60653}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{950DF4C9-F05A-47A6-9E31-AC880CF60653}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{950DF4C9-F05A-47A6-9E31-AC880CF60653}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6212140B-AF49-4586-836A-E772AC929DA6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6212140B-AF49-4586-836A-E772AC929DA6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6212140B-AF49-4586-836A-E772AC929DA6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6212140B-AF49-4586-836A-E772AC929DA6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{59188602-7006-4338-9511-9468D4A4BB04}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{59188602-7006-4338-9511-9468D4A4BB04}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{59188602-7006-4338-9511-9468D4A4BB04}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{59188602-7006-4338-9511-9468D4A4BB04}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(SourceCodeControl) = preSolution
+		SccNumberOfProjects = 7
+		SccLocalPath0 = .
+		SccProjectUniqueName1 = DSchedule.BusinessComponent\\DSchedule.BusinessComponent.csproj
+		SccLocalPath1 = .
+		SccProjectFilePathRelativizedFromConnection1 = DSchedule.BusinessComponent\\
+		SccProjectUniqueName2 = DSchedule.Common\\DSchedule.Common.csproj
+		SccLocalPath2 = .
+		SccProjectFilePathRelativizedFromConnection2 = DSchedule.Common\\
+		SccProjectUniqueName3 = DSchedule.Contracts\\DSchedule.Contracts.csproj
+		SccLocalPath3 = .
+		SccProjectFilePathRelativizedFromConnection3 = DSchedule.Contracts\\
+		SccProjectUniqueName4 = DSchedule.Data\\DSchedule.Data.csproj
+		SccLocalPath4 = .
+		SccProjectFilePathRelativizedFromConnection4 = DSchedule.Data\\
+		SccProjectUniqueName5 = DSchedule.Utilities\\DSchedule.Utilities.csproj
+		SccLocalPath5 = .
+		SccProjectFilePathRelativizedFromConnection5 = DSchedule.Utilities\\
+		SccProjectUniqueName6 = DSchedule.Web\\DSchedule.Web.csproj
+		SccLocalPath6 = .
+		SccProjectFilePathRelativizedFromConnection6 = DSchedule.Web\\
+	EndGlobalSection
+EndGlobal

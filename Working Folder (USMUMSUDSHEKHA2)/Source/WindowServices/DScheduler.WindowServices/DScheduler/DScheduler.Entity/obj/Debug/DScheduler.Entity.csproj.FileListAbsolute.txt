@@ -1,0 +1,13 @@
+c:\users\astiwari\documents\visual studio 2012\Projects\DScheduler\DScheduler.Entity\bin\Debug\DScheduler.Entity.dll
+c:\users\astiwari\documents\visual studio 2012\Projects\DScheduler\DScheduler.Entity\bin\Debug\DScheduler.Entity.pdb
+c:\users\astiwari\documents\visual studio 2012\Projects\DScheduler\DScheduler.Entity\obj\Debug\DScheduler.Entity.dll
+c:\users\astiwari\documents\visual studio 2012\Projects\DScheduler\DScheduler.Entity\obj\Debug\DScheduler.Entity.pdb
+C:\DSchedule\DScheduler.WindowServices\DScheduler\DScheduler.Entity\bin\Debug\DScheduler.Entity.dll
+C:\DSchedule\DScheduler.WindowServices\DScheduler\DScheduler.Entity\bin\Debug\DScheduler.Entity.pdb
+C:\DSchedule\DScheduler.WindowServices\DScheduler\DScheduler.Entity\obj\Debug\DScheduler.Entity.dll
+C:\DSchedule\DScheduler.WindowServices\DScheduler\DScheduler.Entity\obj\Debug\DScheduler.Entity.pdb
+C:\DSchedule\Working Folder\Source\WindowServices\DScheduler.WindowServices\DScheduler\DScheduler.Entity\bin\Debug\DScheduler.Entity.dll
+C:\DSchedule\Working Folder\Source\WindowServices\DScheduler.WindowServices\DScheduler\DScheduler.Entity\bin\Debug\DScheduler.Entity.pdb
+C:\DSchedule\Working Folder\Source\WindowServices\DScheduler.WindowServices\DScheduler\DScheduler.Entity\obj\Debug\DScheduler.Entity.csprojResolveAssemblyReference.cache
+C:\DSchedule\Working Folder\Source\WindowServices\DScheduler.WindowServices\DScheduler\DScheduler.Entity\obj\Debug\DScheduler.Entity.dll
+C:\DSchedule\Working Folder\Source\WindowServices\DScheduler.WindowServices\DScheduler\DScheduler.Entity\obj\Debug\DScheduler.Entity.pdb

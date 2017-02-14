@@ -1,0 +1,133 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - DScheduler</title>
+    <script src="~/Scripts/jquery-1.10.2.min.js"></script>
+    <script src="~/Scripts/jquery-ui.js"></script>
+    <script src="~/Scripts/jquery.ui.core.js"></script>
+    <script src="~/Scripts/jquery.ui.datepicker.js"></script>
+    @Styles.Render("~/Content/css")
+    <link href="~/Content/themes/base/jquery-ui.css" rel="stylesheet" />
+    @Scripts.Render("~/bundles/modernizr")
+
+</head>
+<body>
+    <div class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                @Html.ActionLink("DScheduler", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+            </div>
+            <div class="navbar-collapse collapse">
+                @*<ul class="nav navbar-nav">
+                    <li>@Html.ActionLink("Home", "Index", "Home")</li>
+                    <li>@Html.ActionLink("About", "About", "Home")</li>
+                    <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
+                </ul>*@
+                @Html.Partial("_LoginPartial")
+            </div>
+        </div>
+    </div>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-2">
+                @*<tr>*@
+                @*<td width="10%" align="left" valign="top">*@
+                    @*<div class="horizontalcontainer">
+                        <table border="1" width="100%">
+                            <tr>
+                                <td>
+                                    @Html.ActionLink("User Accounts", "UserDetails", new { controller = "UserAccounts" }, new { @class = "btn btn-master", @style = "color:black", @width = "100%" })
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    @Html.ActionLink("Nodes", "NodesView", new { controller = "JobDesign" }, new { @class = "btn btn-master", @style = "color:black" })
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    @Html.ActionLink("Environment", "EnvironmentView", "JobDesign",null, new { @class = "btn btn-master", @style = "color:black" })
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    @Html.ActionLink("Uprocs", "UprocsView", new { controller = "JobDesign" }, new { @class = "btn btn-master", @style = "color:black" })
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    @Html.ActionLink("Sessions", "SessionsView", "JobDesign",null, new { @class = "btn btn-master", @style = "color:black" })
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    @Html.ActionLink("Job Rules", "Index", new { controller = "Home" }, new { @class = "btn btn-master", @style = "color:black" })
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    @Html.ActionLink("Job Monitoring", "Index", new { controller = "JobMonitor" }, new { @class = "btn btn-master", @style = "color:black" })
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    @Html.ActionLink("Reports", "Index", new { controller = "Reports" }, new { @class = "btn btn-master", @style = "color:black" })
+                                </td>
+                            </tr>
+                        </table>
+                    </div>*@
+                @*</td>*@
+                <div class="list-group leftnavbar">
+                    @Html.ActionLink("User Accounts", "UserDetails", new { controller = "UserAccounts" }, new { @class = "list-group-item list-group-item-action leftnav" })
+                    @Html.ActionLink("Nodes", "NodesView", new { controller = "JobDesign" }, new { @class = "list-group-item list-group-item-action leftnav" })
+                    @Html.ActionLink("Environment", "EnvironmentView", "JobDesign", null, new { @class = "list-group-item list-group-item-action leftnav" })
+                    @Html.ActionLink("Uprocs", "UprocsView", new { controller = "JobDesign" }, new { @class = "list-group-item list-group-item-action leftnav" })
+                    @Html.ActionLink("Sessions", "SessionsView", "JobDesign", null, new { @class = "list-group-item list-group-item-action leftnav" })
+                    @Html.ActionLink("Job Rules", "JobRulesView", "JobDesign",null, new { @class = "list-group-item list-group-item-action leftnav" })
+                    @Html.ActionLink("Job Monitoring", "Index", new { controller = "JobMonitor" }, new { @class = "list-group-item list-group-item-action leftnav" })
+                    @Html.ActionLink("Reports", "Index", new { controller = "Reports" }, new { @class = "list-group-item list-group-item-action leftnav" })
+                </div>
+       
+
+            </div>
+            <div class="col-md-12">
+                @*<td width="90%" align="left" valign="top">*@
+                    @*<div class="container body-content" style="margin: 0px; padding: 0px; position:static; right: 0px;
+    top: 0px; width: 100%; height: 100%; background-color:white;">*@
+                        @RenderBody()
+
+                        @*<div id="divLoading" style="margin: 0px; padding: 0px; position: fixed; right: 0px;
+                    top: 0px; width: 100%; height: 100%; background-color: #666666; z-index: 30001;
+                    opacity: .8; filter: alpha(opacity=70);display:none">
+                            <p style="position: absolute; top: 30%; left: 45%; color: White;">
+                                Loading, please wait...@*<img src="../../Content/themes/base/images/ajax-loading.gif">*@
+                            @*</p>
+                        </div>*@
+                    </div>
+                @*</td>*@
+            </div>
+                @*</tr>*@
+                @*<tr>*@
+                    @*<td>*@
+                        <footer>
+                            <p>&copy; @DateTime.Now.Year -Deloitte</p>
+                        </footer>
+                    @*</td>*@
+                @*</tr>*@
+            
+        </div>
+    
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @Scripts.Render("~/bundles/jqueryui")
+    @RenderSection("scripts", required: false)
+</body>
+</html>
+

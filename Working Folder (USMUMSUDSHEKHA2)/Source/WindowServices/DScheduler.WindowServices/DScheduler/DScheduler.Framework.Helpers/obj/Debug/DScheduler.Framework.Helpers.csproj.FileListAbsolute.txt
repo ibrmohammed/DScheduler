@@ -1,0 +1,11 @@
+C:\DSchedule\DScheduler.WindowServices\DScheduler\DScheduler.Framework.Helpers\bin\Debug\DScheduler.Framework.Helpers.dll.config
+C:\DSchedule\DScheduler.WindowServices\DScheduler\DScheduler.Framework.Helpers\bin\Debug\DScheduler.Framework.Helpers.dll
+C:\DSchedule\DScheduler.WindowServices\DScheduler\DScheduler.Framework.Helpers\bin\Debug\DScheduler.Framework.Helpers.pdb
+C:\DSchedule\DScheduler.WindowServices\DScheduler\DScheduler.Framework.Helpers\obj\Debug\DScheduler.Framework.Helpers.dll
+C:\DSchedule\DScheduler.WindowServices\DScheduler\DScheduler.Framework.Helpers\obj\Debug\DScheduler.Framework.Helpers.pdb
+C:\DSchedule\Working Folder\Source\WindowServices\DScheduler.WindowServices\DScheduler\DScheduler.Framework.Helpers\bin\Debug\DScheduler.Framework.Helpers.dll.config
+C:\DSchedule\Working Folder\Source\WindowServices\DScheduler.WindowServices\DScheduler\DScheduler.Framework.Helpers\bin\Debug\DScheduler.Framework.Helpers.dll
+C:\DSchedule\Working Folder\Source\WindowServices\DScheduler.WindowServices\DScheduler\DScheduler.Framework.Helpers\bin\Debug\DScheduler.Framework.Helpers.pdb
+C:\DSchedule\Working Folder\Source\WindowServices\DScheduler.WindowServices\DScheduler\DScheduler.Framework.Helpers\obj\Debug\DScheduler.Framework.Helpers.csprojResolveAssemblyReference.cache
+C:\DSchedule\Working Folder\Source\WindowServices\DScheduler.WindowServices\DScheduler\DScheduler.Framework.Helpers\obj\Debug\DScheduler.Framework.Helpers.dll
+C:\DSchedule\Working Folder\Source\WindowServices\DScheduler.WindowServices\DScheduler\DScheduler.Framework.Helpers\obj\Debug\DScheduler.Framework.Helpers.pdb

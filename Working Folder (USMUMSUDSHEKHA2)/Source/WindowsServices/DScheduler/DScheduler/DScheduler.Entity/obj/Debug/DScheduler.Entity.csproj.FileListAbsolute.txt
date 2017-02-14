@@ -1,0 +1,5 @@
+C:\Working Folder (USMUMSUDSHEKHA2)\Source\WindowsServices\DScheduler\DScheduler\DScheduler.Entity\bin\Debug\DScheduler.Entity.dll
+C:\Working Folder (USMUMSUDSHEKHA2)\Source\WindowsServices\DScheduler\DScheduler\DScheduler.Entity\bin\Debug\DScheduler.Entity.pdb
+C:\Working Folder (USMUMSUDSHEKHA2)\Source\WindowsServices\DScheduler\DScheduler\DScheduler.Entity\obj\Debug\DScheduler.Entity.csprojResolveAssemblyReference.cache
+C:\Working Folder (USMUMSUDSHEKHA2)\Source\WindowsServices\DScheduler\DScheduler\DScheduler.Entity\obj\Debug\DScheduler.Entity.dll
+C:\Working Folder (USMUMSUDSHEKHA2)\Source\WindowsServices\DScheduler\DScheduler\DScheduler.Entity\obj\Debug\DScheduler.Entity.pdb

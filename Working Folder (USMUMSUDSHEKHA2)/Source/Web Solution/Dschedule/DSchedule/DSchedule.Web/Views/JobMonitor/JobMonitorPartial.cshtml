@@ -1,0 +1,93 @@
+﻿@model DSchedule.Contracts.Models.JobMonitorModel
+
+@*<div style="height:450px;width:auto">
+        @using GridMvc.Html
+
+        @Html.Grid((List<DSchedule.Contracts.Models.JobMonitor>)Model.JobMonitorList).Named("JobMonitorGrid").Columns(columns =>
+    {
+        columns.Add(c => c.UprocID).Titled("UProc ID").Css("hidden-xs");
+        columns.Add(c => c.SessionID).Titled("Session ID").Css("hidden-xs");
+        columns.Add(c => c.UprocName).Titled("UProcs").Sortable(true);
+        columns.Add(c => c.SessionName).Titled("Session").Sortable(true);
+        columns.Add(c => c.UProcStatus).Titled("Status").Sortable(true);
+        columns.Add(c => c.EnvironmentName).Titled("Environment").Sortable(true);
+        columns.Add(c => c.NodeName).Titled("Node").Sortable(true);
+        columns.Add(c => c.ScheduleDateTime).Titled("Scheduled DateTime").Sortable(true);
+        columns.Add(c => c.StartedDateTime).Titled("Start DateTime").Sortable(true);
+        columns.Add(c => c.CompletedDateTime).Titled("Completed DateTime").Sortable(true);
+        columns.Add(c => c.CreatedBy).Titled("Created By").Sortable(true);
+        columns.Add(c => c.CreatedDateTime).Titled("Created DateTime").Sortable(true);
+        columns.Add(c => c.UpdatedBy).Titled("Updated By").Sortable(true);
+        columns.Add(c => c.UpdatedDateTime).Titled("Updated DateTime").Sortable(true);
+
+        //columns.Add()
+        //.Encoded(false)
+        //.Sanitized(false)
+        //.SetWidth(30)
+        //.RenderValueAs(o => Html.ActionLink("Update",null,null
+        //    //, "GetUProcDetailsByID"
+        //    //, "JobMonitor"
+        //    , new { uProcID = o.UprocID, sessionID = o.SessionID }, new { @class = "my_class" }
+        //));
+    }).WithPaging(7)
+    </div>*@
+
+<table class="table table-sm table-bordered table-striped">
+    <thead class="thead-default">
+        <tr>
+            <th>Uproc Id</th>
+            <th>Session Id</th>
+            <th>UProcs</th>
+            <th>Session</th>
+            <th>Status</th>
+            <th>Environment</th>
+            <th>Node</th>
+            <th>Schedule DateTime</th>
+            <th>Start DateTime</th>
+            <th>Completed DateTime</th>
+            <th>Created By</th>
+            <th>Create DateTime</th>
+            <th>Updated By</th>
+            <th>Updated DateTime</th>
+        </tr>
+    </thead>
+    <tbody>
+        @{
+            if (Model.JobMonitorList != null && Model.JobMonitorList.Count > 0)
+            {
+                foreach (var monitorRow in Model.JobMonitorList)
+                {
+                    <tr class="tablerow">
+                        <td class="uprocId">@monitorRow.UprocID</td>
+                        <td class="sessionId">@monitorRow.SessionID</td>
+                        <td>@monitorRow.UprocName</td>
+                        <td>@monitorRow.SessionName</td>
+                        <td>@monitorRow.UProcStatus</td>
+                        <td>@monitorRow.EnvironmentName</td>
+                        <td>@monitorRow.NodeName</td>
+                        <td>@monitorRow.ScheduleDateTime</td>
+                        <td>@monitorRow.StartedDateTime</td>
+                        <td>@monitorRow.CompletedDateTime</td>
+                        <td>@monitorRow.CreatedBy</td>
+                        <td>@monitorRow.CreatedDateTime</td>
+                        <td>@monitorRow.UpdatedBy</td>
+                        <td>@monitorRow.UpdatedDateTime</td>
+                    </tr>
+                }
+            }
+            else
+            {
+                <tr class="tablerow">
+                    
+                    <td colspan="14" align="center">-------------------------------------No data available in the table.---------------------------------------</td>
+                    
+                </tr>
+            }
+        }
+
+    </tbody>
+</table>
+
+
+
+

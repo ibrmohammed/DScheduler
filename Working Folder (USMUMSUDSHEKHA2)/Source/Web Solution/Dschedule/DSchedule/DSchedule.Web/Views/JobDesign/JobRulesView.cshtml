@@ -1,0 +1,487 @@
+﻿@model DSchedule.Contracts.Models.JobRulesModel
+@using DSchedule.Contracts.Models
+@using GridMvc.Html
+@{
+    ViewBag.Title = "JobRulesView";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Job Rules</h2>
+<html>
+<head>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+    @Scripts.Render("~/bundles/jquery")
+    <link href="@Url.Content("~/Content/Gridmvc.css")" rel="stylesheet" />
+    <link href="@Url.Content("~/Content/bootstrap-datepicker.css")" rel="stylesheet" />
+    <link href="@Url.Content("~/Content/bootstrap.min.css")" rel="stylesheet" />
+    <link href="@Url.Content("~/Content/bootstrap.css")" rel="stylesheet" />
+    <script src="@Url.Content("~/Scripts/gridmvc.min.js")"></script>
+    <script src="@Url.Content("~/Scripts/bootstrap-datepicker.js")"></script>
+    <script src="@Url.Content("~/Scripts/jquery.validate.js")"></script>
+    <script src="@Url.Content("~/Scripts/jquery.validate.min.js")"></script>
+    <script src="@Url.Content("~/Scripts/jquery.validate.unobtrusive.js")"></script>
+    <script src="@Url.Content("~/Scripts/jquery.validate.unobtrusive.min.js")"></script>
+    <script src="@Url.Content("~/Scripts/jquery.unobtrusive-ajax.js")"></script>
+    <script src="@Url.Content("~/Scripts/jquery.unobtrusive-ajax.min.js")"></script>
+    <script src="~/Scripts/CustomValidation.js"></script>
+    <script type="text/javascript">
+        $('.datepicker').datepicker(); //Initialise any date pickers
+    </script>
+    <script type="text/javascript">
+
+        $(document).ready(function () {
+            //$('.timepicker').timepicker({
+            //    timeFormat: 'h:mm p',
+            //    interval: 60,
+            //    minTime: '10',
+            //    maxTime: '6:00pm',
+            //    defaultTime: '11',
+            //    startTime: '10:00',
+            //    dynamic: false,
+            //    dropdown: true,
+            //    scrollbar: true
+            //});
+            $("#recurrenceGroup").hide();
+            $("#recurrencePatternDetails").hide();
+            var recurrencepattern = $('input[type=radio][name=RecurrencePattern]').val();
+            if (recurrencepattern == "")
+            {
+                $("#recurrencePatternDetails").hide();
+                $("#recurrencePatternMonthly").hide();
+                $("#recurrencePatternYearly").hide();
+            }
+            $("#jobStartDate").datepicker({
+                changeMonth: true,
+                changeYear: true
+            });
+            $("#btnJobStartDate").click(function () {
+
+                $("#jobStartDate").focus();
+            });
+            $("#endByDatepicker").datepicker({
+                changeMonth: true,
+                changeYear: true
+            });
+            $('#btnEndByDate').click(function () {
+                $("#endByDatepicker").focus();
+            });
+            $("#outageDateDatepicker").datepicker({
+                changeMonth: true,
+                changeYear: true
+            });
+            $('#btnOutageDate').click(function () {
+                $("#outageDateDatepicker").focus();
+            });
+            $("#recurrenceStartDate").datepicker({
+                changeMonth: true,
+                changeYear: true
+            });
+            $("#btnRecurrenceStartDate").click(function () {
+
+                $("#recurrenceStartDate").focus();
+            });
+            //Show/Hide on check/uncheck of Recurrence checkbox
+            $('#chkRecurrence').click(function () {
+                if ($(this).is(':checked')) {
+                    $("#recurrenceGroup").show();
+                }
+                else {
+                    $("#recurrenceGroup").hide();
+                }
+            });
+            //Show/Hide on click of Recurrence pattern radio button
+            $('input[type=radio][name=RecurrencePattern]').change(function () {
+                if (this.value == '12') {
+                    $("#recurrencePatternDetails").show();
+                    $("#recurrencePatternMonthly").hide();
+                    $("#recurrencePatternYearly").hide();
+                }
+                else if (this.value == '13') {
+                    $("#recurrencePatternDetails").hide();
+                    $("#recurrencePatternMonthly").show();
+                    $("#recurrencePatternYearly").hide();
+                }
+                else if (this.value == '14') {
+                    $("#recurrencePatternDetails").hide();
+                    $("#recurrencePatternMonthly").hide();
+                    $("#recurrencePatternYearly").show();
+                }
+                else {
+                    $("#recurrencePatternDetails").hide();
+                    $("#recurrencePatternMonthly").hide();
+                    $("#recurrencePatternYearly").hide();
+                }
+            });
+            //Reset the form on click of New Rule
+            $('#btnNewRule').click(function (e) {
+                $("#frmJobRules")[0].reset()
+            });
+            $("input:radio[name=ActivityTypeID]").change(function () {
+
+                var val = $(this).val();
+                var subItems = "";
+                $.getJSON("@Url.Action("GetSessionOrUproc", "JobDesign")", { id: val }, function (data) {
+                    $.each(data, function (index, item) {
+                        subItems += "<option value='" + item.RefId + "'>" + item.RefValue + "</option>"
+                    });
+                    $("#cmbUprocSession").html(subItems)
+                });
+            });
+            //Script to add items to a listbox
+            //$("#btnNewOutage").click(function () {
+            //    //debugger;
+            //    var txtOutageName = $("#txtOutageName").val();
+            //    var txtOutageDate = $("#outageDateDatepicker").val();
+            //    var txtOutageFrom = $("#txtOutageFrom").val();
+            //    var txtOutageTo = $("#txtOutageTo").val();
+            //    if (txtOutageName == "") {
+            //        alert("Please enter Outage Name");
+            //        return false;
+            //    }
+            //    else if (txtOutageDate == "") {
+            //        alert("Please enter Outage Date");
+            //        return false;
+            //    }
+            //    else if (txtOutageFrom == "") {
+            //        alert("Please enter Outage From");
+            //        return false;
+            //    }
+            //    else if (txtOutageTo == "") {
+            //        alert("Please enter Outage To");
+            //        return false;
+            //    }
+            //    var markup = "<tr><td>" + txtOutageName + "</td><td>" + txtOutageDate + "</td><td>" + txtOutageFrom + "</td><td>" + txtOutageTo + "</td></tr>";
+            //    $("table[id='tblOutage']").append(markup);
+            //    $("#txtOutageName").val("");
+            //    $("#outageDateDatepicker").val("");
+            //    $("#txtOutageFrom").val("");
+            //    $("#txtOutageTo").val("");
+            //    //var txtOutage = txtOutageName + " " + txtOutageDate;
+            //    //var lst = $("#listOutageDetails");
+            //    //var ul = $("#itemList");
+            //    //var options = $("#listOutageDetails option");
+            //    //var iList = $("#itemList li");
+            //    //var alreadyExist = false;
+            //    //$(options).each(function () {
+            //    //    if ($(this).val() == txtOutage) {
+            //    //        alreadyExist = true;
+            //    //        alert("The outage details already exist");
+            //    //        $("#txtOutageName").val("");
+            //    //        $("#outageDateDatepicker").val("");
+            //    //        txtOutage = "";
+            //    //        return alreadyExist;
+            //    //    }
+            //    //});
+            //    //if (!alreadyExist) {
+            //    //    $(lst).append('<option value="' + txtOutage + '" selected=true>' + txtOutage + '</option>');
+            //    //    $(ul).append('<li id="' + txtOutage + '"><label>' + txtOutage + '<input type="checkbox" id="' + txtOutage + '" onclick="removeItem(this.id)"/></label>')
+            //    //    $("#txtOutageName").val("");
+            //    //    $("#outageDateDatepicker").val("");
+            //    //    txtOutage = "";
+            //    //    return false;
+            //    //}
+            //});
+
+            //$(".btnSave").click(function () {
+            //    debugger;
+            //    var gridData = {};
+            //    gridData = $('#frmJobRules').serialize();
+
+
+            //    $.ajax({
+            //        url: "/JobDesign/JobRulesView",
+            //        dataType: "json",
+            //        type: "POST",
+            //        data: JSON.stringify(gridData),
+            //        contentType: "application/json",
+            //        success: function (data) {
+            //        },
+            //        error: function (data) {
+            //            debugger;
+            //        }
+            //    });
+            //});
+            $("#btnNewOutage").click(function () {
+                //debugger;
+                var Name = $("#txtOutageName").val();
+                var OutageDate = $("#outageDateDatepicker").val();
+                var count = $("#tblOutage tr").length;
+                $.ajax({
+                    url: '/JobDesign/Add',
+                    data: { 'OutageName': Name, 'OutageDate': OutageDate, 'Count': count },
+                    type: "post",
+                    cache: false,
+                    success: function (data) {
+                        //alert(data);
+                        $("#tbOutage").append(data);
+                    },
+                    error: function (data) {
+                   }
+                });
+            });
+        });
+    </script>
+</head>
+<body>
+    @{ Html.EnableClientValidation(); }
+    @using (Html.BeginForm("JobRulesView", "JobDesign", Model, FormMethod.Post, new { name = "frmJobRules", id = "frmJobRules" }))
+    {
+
+
+        <div class="container-fluid" style="height:300px">
+            @Html.Grid((List<DSchedule.Contracts.Models.JobRules>)Model.JobRulesList).Named("ordersGrid").Columns(columns =>
+  {
+      columns.Add(c => c.UprocName).Titled("Uprocs").Filterable(false);
+      columns.Add(c => c.SessionName).Titled("Session").Filterable(false);
+      columns.Add(c => c.Environment).Titled("Environment").Filterable(true);
+      columns.Add(c => c.Node).Titled("Node").Filterable(true);
+      columns.Add(c => c.ScheduledDateTime).Titled("Scheduled Date/Time").Filterable(true);
+      columns.Add(c => c.StartedDateTime).Titled("Start Date/Time").Filterable(true);
+      columns.Add(c => c.CompletedDateTime).Titled("Completed Date/Time").Filterable(true);
+      columns.Add(c => c.CreatedBy).Titled("Created By").Filterable(true);
+      columns.Add(c => c.CreatedDate).Titled("Create Date").Filterable(true);
+      columns.Add(c => c.UpdatedBy).Titled("Updated By").Filterable(true);
+      columns.Add(c => c.UpdatedDate).Titled("Update Date").Filterable(true);
+  }).WithPaging(3).Sortable(true)
+        </div>
+        <div class="container-fluid">
+            <div class="form-horizontal well">
+                <div class="form-group">
+                    <div class="col-md-2">@Html.RadioButtonFor(m => m.ActivityTypeID, 9, new { name = "rdoSessionUproc" })&nbsp;&nbsp;@Html.Label("Uproc")</div>
+                    <div class="col-md-2">@Html.RadioButtonFor(m => m.ActivityTypeID, 10, new { name = "rdoSessionUproc" })&nbsp;&nbsp;@Html.Label("Session")</div>
+                    <div class="col-md-2">@Html.Label("Uproc/Session"):</div>
+                    <div class="col-md-2">
+                        @Html.DropDownListFor(x => x.UprocOrSessionId, new SelectList(ViewBag.UprocSessionRef, "RefId", "RefDescription"), new { @id = "cmbUprocSession", @class = "form-control" })
+                        @Html.HiddenFor(m => m.UprocsReferenceData, new { @id = "hdnUprocsReferenceData" })
+                    </div>
+                    <div>
+                        <span class="text-danger">
+                            @Html.ValidationMessageFor(m => @Model.ActivityTypeID)
+                            @Html.ValidationMessageFor(m => @Model.UprocOrSessionId)
+                        </span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-md-2">@Html.Label("Job Start Time"):</div>
+                    <div class="col-md-2">
+                        <div class="input-group bootstrap-timepicker timepicker">
+                            @Html.TextBoxFor(m => m.JobStartDate, new { @id = "timepicker1", @class = "form-control timepicker" })
+                            <span class="input-group-addon" id="btnTimepicker"><i class="glyphicon glyphicon-time"></i></span>
+                        </div>
+                    </div>
+                    <div>
+                        <span class="text-danger">
+                            @Html.ValidationMessageFor(m => @Model.JobStartDate)
+                        </span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-md-4">@Html.Label("Recurrence"):&nbsp;&nbsp;@Html.CheckBoxFor(m => m.IsRecurrence, new { @id = "chkRecurrence" })</div>
+                </div>
+                <div id="recurrenceGroup">
+                    <div class="form-group">
+                        <div class="col-md-2">@Html.Label("Recurrence Pattern:")</div>
+                        <div class="col-md-1">@Html.RadioButtonFor(m => m.RecurrencePattern, "11", new { @id = "rdoDaily", @name = "RecurrencePattern" })&nbsp;&nbsp;@Html.Label("Daily")</div>
+                        <div class="col-md-1">@Html.RadioButtonFor(m => m.RecurrencePattern, "12", new { @id = "rdoWeekly", @name = "RecurrencePattern" })&nbsp;&nbsp;@Html.Label("Weekly")</div>
+                        <div class="col-md-2">@Html.RadioButtonFor(m => m.RecurrencePattern, "13", new { @id = "rdoMonthly", @name = "RecurrencePattern" })&nbsp;&nbsp;@Html.Label("Monthly")</div>
+                        <div class="col-md-1">@Html.RadioButtonFor(m => m.RecurrencePattern, "14", new { @id = "rdoYearly", @name = "RecurrencePattern" })&nbsp;&nbsp;@Html.Label("Yearly")</div>
+                        <div>
+                            <span class="text-danger">
+                                @Html.ValidationMessageFor(m => @Model.RecurrencePattern)
+                            </span>
+                        </div>
+                    </div>
+                    <div class="form-group" id="recurrencePatternDetails">
+                        <div class="col-md-2">@Html.Label("Recur every 1 week(s) on:")</div>
+                        <div class="col-md-2">@Html.CheckBoxFor(m => m.IsMonday)&nbsp;&nbsp;@Html.Label("Monday")</div>
+                        <div class="col-md-2">@Html.CheckBoxFor(m => m.IsTuesday)&nbsp;&nbsp;@Html.Label("Tuesday")</div>
+                        <div class="col-md-2">@Html.CheckBoxFor(m => m.IsWednesday)&nbsp;&nbsp;@Html.Label("Wednesday")</div>
+                        <div class="col-md-2">@Html.CheckBoxFor(m => m.IsThursday)&nbsp;&nbsp;@Html.Label("Thursday")</div>
+                        <div class="col-md-2">@Html.CheckBoxFor(m => m.IsFriday)&nbsp;&nbsp;@Html.Label("Friday")</div>
+                        <div class="col-md-2">@Html.CheckBoxFor(m => m.IsSaturday)&nbsp;&nbsp;@Html.Label("Saturday")</div>
+                        <div class="col-md-2">@Html.CheckBoxFor(m => m.IsSunday)&nbsp;&nbsp;@Html.Label("Sunday")</div>
+                    </div>
+                    <div class="form-group" id="recurrencePatternMonthly">
+                        <div class="col-md-2">@Html.Label("Recur every 1 month(s) on:")</div>
+                        <div class="col-md-2">@Html.TextBoxFor(m => m.RMDay, new { @id = "txtMRDay", @class = "form-control input-sm" })&nbsp;&nbsp;</div>
+                    </div>
+                    <div class="form-group" id="recurrencePatternYearly">
+                        <div class="col-md-2">@Html.Label("Recur every 1 year(s) on:")</div>
+                        <div class="col-sm-10">@Html.TextBoxFor(m => m.RYMonth, new { @id = "ddlMonthName", @class = "input-sm" })&nbsp;&nbsp;@Html.TextBoxFor(m => m.RYDay, new { @id = "txtYRDay", @class = "input-sm" })</div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-md-2">@Html.Label("Range of Recurrence:")</div>
+                        <div class="col-md-2">
+                            <div class="row">
+                                <div class="col-md-11">
+                                    @Html.TextBoxFor(model => model.RecurrenceStartDate, new { @id = "recurrenceStartDate", @class = "form-control datepicker", placeholder = "Enter start date" })
+                                </div>
+                                <div class="col-md-3">
+                                    <span class="input-group-addon" id="btnRecurrenceStartDate" style="cursor:pointer;">
+                                        <span class="glyphicon glyphicon-calendar"></span>
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-2">@Html.RadioButton("RecurrenceEndDate", "No end date")&nbsp;&nbsp;@Html.Label("No end date")</div>
+                        <div class="col-md-2">@Html.RadioButton("RecurrenceEndDate", "End date after")&nbsp;&nbsp;@Html.Label("End date after")</div>
+                        <div class="col-md-2">@Html.RadioButton("RecurrenceEndDate", "End by")&nbsp;&nbsp;@Html.Label("End by")</div>
+                        <div class="col-md-2">
+                            <div class="row">
+                                <div class="col-md-11">
+                                    @Html.TextBoxFor(model => model.RecurrenceEndDate, new { @id = "endByDatepicker", @class = "form-control datepicker", placeholder = "Enter end date" })
+                                </div>
+                                <div class="col-md-3">
+                                    <span class="input-group-addon" id="btnEndByDate" style="cursor:pointer;">
+                                        <span class="glyphicon glyphicon-calendar"></span>
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                @*<div class="form-group">
+                        <div class="col-md-2">@Html.Label("Outage Window:")</div>
+                        <div class="col-md-2">
+                            @Html.TextBoxFor(model => Model.OutageName, new { @id = "txtOutageName", @class = "form-control" })
+                            @Html.ValidationMessageFor(modelItem => @Model.OutageName)
+                        </div>
+                        <div class="col-md-2">
+                            <div class="row">
+                                <div class="col-md-11">
+                                    @Html.TextBoxFor(model => model.OutageDate, new { @id = "outageDateDatepicker", @class = "form-control datepicker" })
+                                </div>
+                                <div class="col-md-3">
+                                    <span class="input-group-addon" id="btnOutageDate" style="cursor:pointer;">
+                                        <span class="glyphicon glyphicon-calendar"></span>
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-1">@Html.Label("From:")</div>
+                        <div class="col-md-2">
+                            <div class="input-group bootstrap-timepicker timepicker">
+                                @Html.TextBoxFor(model => model.OutageFrom, new { @id = "txtOutageFrom", @class = "form-control input-small" })
+                                <span class="input-group-addon"><i class="glyphicon glyphicon-time"></i></span>
+                            </div>
+
+                        </div>
+                        <div class="col-md-1">@Html.Label("To:")</div>
+                        <div class="col-md-2">
+                            <div class="input-group bootstrap-timepicker timepicker">
+                                @Html.TextBoxFor(model => model.OutageTo, new { @id = "txtOutageTo", @class = "form-control input-small" })
+                                <span class="input-group-addon"><i class="glyphicon glyphicon-time"></i></span>
+                            </div>
+
+                        </div>
+                        <div class="col-md-1"><input type="button" value="Add" name="btnNewOutage" id="btnNewOutage" class="btn btn-primary" /></div>
+                    </div>*@
+                @*<div class="form-group">
+                        <div class="col-md-2">@Html.Label("Outage Details:")</div>
+                        <div class="col-md-3">@Html.ListBoxFor(m => m.Outage, new MultiSelectList((Model.Outage), "Value", "Text"), new { @id = "listOutageDetails", @class = "form-control" })</div>
+                    </div>*@
+                @*<div class="form-group" id="divOutage">
+                        <table id="tblOutage" class="table table-bordered" style="width:400px">
+                            <thead class="grid-header-title">
+                                <tr>
+                                    <td>Outage</td>
+                                    <td>Date</td>
+                                    <td>To</td>
+                                    <td>From</td>
+                                </tr>
+                            </thead>
+                            @Html.HiddenFor(m => m.Outage.Count)
+                            @for (int i = 0; i < Model.Outage.Count(); i++)
+                            {
+                                @Html.HiddenFor(m => m.Outage[i].OutageId, new { @name = Model.Outage[i].OutageId })
+                                @Html.HiddenFor(m => m.Outage[i].OutageName, new { @name = Model.Outage[i].OutageName })
+                                @Html.HiddenFor(m => m.Outage[i].OutageDate, new { @name = Model.Outage[i].OutageDate })
+                                @Html.HiddenFor(m => m.Outage[i].OutageFrom, new { @name = Model.Outage[i].OutageFrom })
+                                @Html.HiddenFor(m => m.Outage[i].OutageTo, new { @name = Model.Outage[i].OutageTo })
+                                <tr>
+                                    <td>@Html.DisplayFor(m => m.Outage[i].OutageName)</td>
+                                    <td>@Html.DisplayFor(m => m.Outage[i].OutageDate)</td>
+                                    <td>@Html.DisplayFor(m => m.Outage[i].OutageFrom)</td>
+                                    <td>@Html.DisplayFor(m => m.Outage[i].OutageTo)</td>
+                                </tr>
+                            }
+                            @Html.HiddenFor(m => m.Outage, new { id = "hdnOutage" })
+                        </table>
+                    </div>*@
+                <div class="form-group">
+                    <div class="col-md-2">
+                        @Html.Label("Outage Window:")
+                    </div>
+                    <div class="col-md-2">
+                        @Html.TextBox("OutageName", null, new { @id = "txtOutageName", @class = "form-control" })
+                    </div>
+                    <div class="col-md-2">
+                        <div class="row">
+                            <div class="col-md-11">
+                                @Html.TextBox("OutageDate", null, new { @id = "outageDateDatepicker", @class = "form-control datepicker" })
+                            </div>
+                            <div class="col-md-3">
+                                <span class="input-group-addon" id="btnOutageDate" style="cursor:pointer;">
+                                    <span class="glyphicon glyphicon-calendar"></span>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-1">
+                        @Html.Label("From:")
+                    </div>
+                    <div class="col-md-2">
+                        <div class="input-group bootstrap-timepicker timepicker">
+                            @Html.TextBox("OutageFrom", null, new { @id = "txtOutageFrom", @class = "form-control input-small" })
+                            <span class="input-group-addon"><i class="glyphicon glyphicon-time"></i></span>
+                        </div>
+
+                    </div>
+                    <div class="col-md-1">@Html.Label("To:")</div>
+                    <div class="col-md-2">
+                        <div class="input-group bootstrap-timepicker timepicker">
+                            @Html.TextBox("OutageTo", null, new { @id = "txtOutageTo", @class = "form-control input-small" })
+                            <span class="input-group-addon"><i class="glyphicon glyphicon-time"></i></span>
+                        </div>
+
+                    </div>
+                    <div class="col-md-1"><input type="button" value="Add" name="btnNewOutage" id="btnNewOutage" class="btn btn-primary" /></div>
+                </div>
+                <div class="form-group" id="divOutage">
+                    <table id="tblOutage" class="table table-bordered" style="width:400px">
+                        <thead>
+                            <tr>
+                                <th>Outage</th>
+                                <th>Date</th>
+                                <th>To</th>
+                                <th>From</th>
+                            </tr>
+                        </thead>
+                        <tbody id="tbOutage">
+                            @for (int i = 0; i < Model.Outage.Count; i++)
+                            {
+                                 Html.RenderPartial("_OutageView", Model.Outage[i]);
+                            }
+                        </tbody>
+
+                    </table>
+                </div>
+                <div class="form-group">
+                    <div class="col-md-2">
+                        <input type="button" value="New Rule" name="btnNewRule" id="btnNewRule" class="btn btn-primary" />
+                    </div>
+                    <div class="col-md-2">
+                        <input name="btnSave" type="submit" value="Save" class="btn btn-primary btnSave" />
+                    </div>
+                    <div class="col-md-2">
+                        <input id="btnCancel" type="button" value="Cancel" class="btn btn-primary" />
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    }
+</body>
+</html>
+

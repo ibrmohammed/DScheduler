@@ -1,0 +1,700 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="DScheduleModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="TDependency">
+    <Key>
+      <PropertyRef Name="DependentID" />
+    </Key>
+    <Property Name="DependentID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="SessionID" Type="Int32" Nullable="false" />
+    <Property Name="UprocID" Type="Int32" />
+    <Property Name="SequenceNumber" Type="Int32" Nullable="false" />
+    <Property Name="IsActive" Type="Int32" Nullable="false" />
+    <Property Name="CreatedDateTime" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="CreatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="UpdatedDateTime" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="UpdatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="TSession" Relationship="Self.FK_TDependencies_SessionID" FromRole="TDependencies" ToRole="TSession" />
+    <NavigationProperty Name="TUproc" Relationship="Self.FK_TDependencies_UprocID" FromRole="TDependencies" ToRole="TUproc" />
+  </EntityType>
+  <EntityType Name="TEnvironment">
+    <Key>
+      <PropertyRef Name="EnvironmentID" />
+    </Key>
+    <Property Name="EnvironmentID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="NodeID" Type="Int32" Nullable="false" />
+    <Property Name="EnvironmentName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="EnvironmentPath" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="CreatedDateTime" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="CreatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="UpdatedDateTime" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="UpdatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="TNode" Relationship="Self.FK_TEnvironment_NodeID" FromRole="TEnvironment" ToRole="TNode" />
+    <NavigationProperty Name="TJobMonitors" Relationship="Self.FK_TJobMonitor_EnvironmentID" FromRole="TEnvironment" ToRole="TJobMonitor" />
+    <NavigationProperty Name="TSessions" Relationship="Self.FK_TSession_EnvironmentID" FromRole="TEnvironment" ToRole="TSession" />
+    <NavigationProperty Name="TUprocs" Relationship="Self.FK_TUproc_EnvironmentID" FromRole="TEnvironment" ToRole="TUproc" />
+  </EntityType>
+  <EntityType Name="TJobAction">
+    <Key>
+      <PropertyRef Name="JobActionID" />
+    </Key>
+    <Property Name="JobActionID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="JobID" Type="Int32" Nullable="false" />
+    <Property Name="JobActionTypeID" Type="Int32" Nullable="false" />
+    <Property Name="CreatedDateTime" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="CreatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="UpdatedDateTime" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="UpdatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="TRef" Relationship="Self.FK_TJobAction_JobActionTypeID" FromRole="TJobAction" ToRole="TRef" />
+    <NavigationProperty Name="TJobMonitor" Relationship="Self.FK_TJobAction_JobID" FromRole="TJobAction" ToRole="TJobMonitor" />
+  </EntityType>
+  <EntityType Name="TJobMonitor">
+    <Key>
+      <PropertyRef Name="JobID" />
+    </Key>
+    <Property Name="JobID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="SessionID" Type="Int32" Nullable="false" />
+    <Property Name="UprocID" Type="Int32" Nullable="false" />
+    <Property Name="EnvironmentID" Type="Int32" Nullable="false" />
+    <Property Name="NodeID" Type="Int32" Nullable="false" />
+    <Property Name="SessionUprocName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="ParentJobName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="EnvironmentName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="NodeName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="ScheduleDateTime" Type="DateTime" Precision="3" />
+    <Property Name="StartedDateTime" Type="DateTime" Precision="3" />
+    <Property Name="CompletedDateTime" Type="DateTime" Precision="3" />
+    <Property Name="CreatedDateTime" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="CreatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="UpdatedDateTime" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="UpdatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="TEnvironment" Relationship="Self.FK_TJobMonitor_EnvironmentID" FromRole="TJobMonitor" ToRole="TEnvironment" />
+    <NavigationProperty Name="TJobActions" Relationship="Self.FK_TJobAction_JobID" FromRole="TJobMonitor" ToRole="TJobAction" />
+    <NavigationProperty Name="TNode" Relationship="Self.FK_TJobMonitor_NodeID" FromRole="TJobMonitor" ToRole="TNode" />
+    <NavigationProperty Name="TSession" Relationship="Self.FK_TJobMonitor_SessionID" FromRole="TJobMonitor" ToRole="TSession" />
+    <NavigationProperty Name="TUproc" Relationship="Self.FK_TJobMonitor_UprocID" FromRole="TJobMonitor" ToRole="TUproc" />
+  </EntityType>
+  <EntityType Name="TJobRule">
+    <Key>
+      <PropertyRef Name="JobRuleID" />
+    </Key>
+    <Property Name="JobRuleID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ActivityTypeID" Type="Int32" Nullable="false" />
+    <Property Name="SessionID" Type="Int32" Nullable="false" />
+    <Property Name="UprocID" Type="Int32" Nullable="false" />
+    <Property Name="RecurrenceID" Type="Int32" Nullable="false" />
+    <Property Name="OutageID" Type="Int32" Nullable="false" />
+    <Property Name="SessionUprocName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="JobStartTime" Type="Time" Precision="7" />
+    <Property Name="Recurrence" Type="Boolean" />
+    <Property Name="CreatedDateTime" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="CreatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="UpdatedDateTime" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="UpdatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="TRef" Relationship="Self.FK_TJobRule_ActivityTypeID" FromRole="TJobRule" ToRole="TRef" />
+    <NavigationProperty Name="TRecurrencePattern" Relationship="Self.FK_TJobRule_RecurrenceID" FromRole="TJobRule" ToRole="TRecurrencePattern" />
+    <NavigationProperty Name="TSession" Relationship="Self.FK_TJobRule_SessionID" FromRole="TJobRule" ToRole="TSession" />
+    <NavigationProperty Name="TUproc" Relationship="Self.FK_TJobRule_UprocID" FromRole="TJobRule" ToRole="TUproc" />
+    <NavigationProperty Name="TOutages" Relationship="Self.FK_TOutage_JobRuleID" FromRole="TJobRule" ToRole="TOutage" />
+  </EntityType>
+  <EntityType Name="TLogin">
+    <Key>
+      <PropertyRef Name="LoginID" />
+    </Key>
+    <Property Name="LoginID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="AccountTypeID" Type="Int32" Nullable="false" />
+    <Property Name="UserName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="FirstName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="LastName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="IsActive" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+    <Property Name="Organization" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="CreatedDateTime" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="CreatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="UpdatedDateTime" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="UpdatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="TRef" Relationship="Self.FK_TLogin_RefID" FromRole="TLogin" ToRole="TRef" />
+  </EntityType>
+  <EntityType Name="TNode">
+    <Key>
+      <PropertyRef Name="NodeID" />
+    </Key>
+    <Property Name="NodeID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="NodeName" Type="Int32" Nullable="false" />
+    <Property Name="NodePath" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="CreatedDateTime" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="CreatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="UpdatedDateTime" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="UpdatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="TEnvironments" Relationship="Self.FK_TEnvironment_NodeID" FromRole="TNode" ToRole="TEnvironment" />
+    <NavigationProperty Name="TJobMonitors" Relationship="Self.FK_TJobMonitor_NodeID" FromRole="TNode" ToRole="TJobMonitor" />
+  </EntityType>
+  <EntityType Name="TOutage">
+    <Key>
+      <PropertyRef Name="OutageID" />
+    </Key>
+    <Property Name="OutageID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="JobRuleID" Type="Int32" Nullable="false" />
+    <Property Name="CreatedDateTime" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="CreatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="UpdatedDateTime" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="UpdatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="TJobRule" Relationship="Self.FK_TOutage_JobRuleID" FromRole="TOutage" ToRole="TJobRule" />
+    <NavigationProperty Name="TOutageDetails" Relationship="Self.FK_TOutageDetails_OutageID" FromRole="TOutage" ToRole="TOutageDetails" />
+  </EntityType>
+  <EntityType Name="TOutageDetail">
+    <Key>
+      <PropertyRef Name="OutageDetailID" />
+    </Key>
+    <Property Name="OutageDetailID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="OutageID" Type="Int32" Nullable="false" />
+    <Property Name="OutageName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="OutageDate" Type="DateTime" Precision="3" />
+    <Property Name="OutageStartTime" Type="DateTime" Precision="3" />
+    <Property Name="OutageEndTime" Type="DateTime" Precision="3" />
+    <Property Name="CreatedDateTime" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="CreatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="UpdatedDateTime" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="UpdatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="TOutage" Relationship="Self.FK_TOutageDetails_OutageID" FromRole="TOutageDetails" ToRole="TOutage" />
+  </EntityType>
+  <EntityType Name="TRecurrencePattern">
+    <Key>
+      <PropertyRef Name="RecurrencePatternID" />
+    </Key>
+    <Property Name="RecurrencePatternID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="RecurrenceID" Type="Int32" Nullable="false" />
+    <Property Name="RecPattTypeID" Type="Int32" />
+    <Property Name="NoOfDays" Type="Int32" />
+    <Property Name="NoOfMonths" Type="Int32" />
+    <Property Name="NoOfYears" Type="Int32" />
+    <Property Name="WeekName" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+    <Property Name="WeekDayName" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+    <Property Name="MonthName" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+    <Property Name="CreatedDateTime" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="CreatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="UpdatedDateTime" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="UpdatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="TJobRules" Relationship="Self.FK_TJobRule_RecurrenceID" FromRole="TRecurrencePattern" ToRole="TJobRule" />
+    <NavigationProperty Name="TRef" Relationship="Self.FK_TRecurrencePattern_RecPattTypeID" FromRole="TRecurrencePattern" ToRole="TRef" />
+  </EntityType>
+  <EntityType Name="TRecurrenceRange">
+    <Key>
+      <PropertyRef Name="RecurrenceRangeID" />
+    </Key>
+    <Property Name="RecurrenceRangeID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="RecRangeTypeID" Type="Int32" Nullable="false" />
+    <Property Name="StartDateTime" Type="DateTime" Precision="3" />
+    <Property Name="EndDateTime" Type="DateTime" Precision="3" />
+    <Property Name="OccurenceCount" Type="Int32" />
+    <Property Name="CreatedDateTime" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="CreatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="UpdatedDateTime" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="UpdatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="TRef" Relationship="Self.FK_TRecurrenceRange_RecRangeTypeID" FromRole="TRecurrenceRange" ToRole="TRef" />
+  </EntityType>
+  <EntityType Name="TRef">
+    <Key>
+      <PropertyRef Name="RefID" />
+    </Key>
+    <Property Name="RefID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="RefName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="RefValue" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="RefDescription" Type="String" MaxLength="500" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="IsActive" Type="String" MaxLength="1" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="IsVisible" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+    <Property Name="CreatedDateTime" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="CreatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="UpdatedDateTime" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="UpdatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="TJobActions" Relationship="Self.FK_TJobAction_JobActionTypeID" FromRole="TRef" ToRole="TJobAction" />
+    <NavigationProperty Name="TJobRules" Relationship="Self.FK_TJobRule_ActivityTypeID" FromRole="TRef" ToRole="TJobRule" />
+    <NavigationProperty Name="TLogins" Relationship="Self.FK_TLogin_RefID" FromRole="TRef" ToRole="TLogin" />
+    <NavigationProperty Name="TRecurrencePatterns" Relationship="Self.FK_TRecurrencePattern_RecPattTypeID" FromRole="TRef" ToRole="TRecurrencePattern" />
+    <NavigationProperty Name="TRecurrenceRanges" Relationship="Self.FK_TRecurrenceRange_RecRangeTypeID" FromRole="TRef" ToRole="TRecurrenceRange" />
+    <NavigationProperty Name="TSessions" Relationship="Self.FK_TSession_AccountTypeID" FromRole="TRef" ToRole="TSession" />
+    <NavigationProperty Name="TUprocs" Relationship="Self.FK_TUproc_AccountTypeID" FromRole="TRef" ToRole="TUproc" />
+    <NavigationProperty Name="TUprocs1" Relationship="Self.FK_TUproc_JobTypeID" FromRole="TRef" ToRole="TUproc" />
+  </EntityType>
+  <EntityType Name="TReport">
+    <Key>
+      <PropertyRef Name="ReportID" />
+    </Key>
+    <Property Name="ReportID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="TemplateID" Type="Int32" Nullable="false" />
+    <Property Name="TemplateName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="CreatedDateTime" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="CreatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="UpdatedDateTime" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="UpdatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="TTemplate" Relationship="Self.FK_TReports_TemplateID" FromRole="TReports" ToRole="TTemplate" />
+  </EntityType>
+  <EntityType Name="TSession">
+    <Key>
+      <PropertyRef Name="SessionID" />
+    </Key>
+    <Property Name="SessionID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="EnvironmentID" Type="Int32" Nullable="false" />
+    <Property Name="AccountTypeID" Type="Int32" Nullable="false" />
+    <Property Name="SessionName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="EnvironmentName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="CreatedDateTime" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="CreatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="UpdatedDateTime" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="UpdatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="TDependencies" Relationship="Self.FK_TDependencies_SessionID" FromRole="TSession" ToRole="TDependencies" />
+    <NavigationProperty Name="TEnvironment" Relationship="Self.FK_TSession_EnvironmentID" FromRole="TSession" ToRole="TEnvironment" />
+    <NavigationProperty Name="TJobMonitors" Relationship="Self.FK_TJobMonitor_SessionID" FromRole="TSession" ToRole="TJobMonitor" />
+    <NavigationProperty Name="TJobRules" Relationship="Self.FK_TJobRule_SessionID" FromRole="TSession" ToRole="TJobRule" />
+    <NavigationProperty Name="TRef" Relationship="Self.FK_TSession_AccountTypeID" FromRole="TSession" ToRole="TRef" />
+  </EntityType>
+  <EntityType Name="TTemplate">
+    <Key>
+      <PropertyRef Name="TemplateID" />
+    </Key>
+    <Property Name="TemplateID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="TemplateName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="CreatedDateTime" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="CreatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="UpdatedDateTime" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="UpdatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="TReports" Relationship="Self.FK_TReports_TemplateID" FromRole="TTemplate" ToRole="TReports" />
+  </EntityType>
+  <EntityType Name="TUproc">
+    <Key>
+      <PropertyRef Name="UprocID" />
+    </Key>
+    <Property Name="UprocID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="JobTypeID" Type="Int32" Nullable="false" />
+    <Property Name="EnvironmentID" Type="Int32" Nullable="false" />
+    <Property Name="AccountTypeID" Type="Int32" Nullable="false" />
+    <Property Name="UprocName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="EnvironmentName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="FolderPath" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Command" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="CreatedDateTime" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="CreatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="UpdatedDateTime" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="UpdatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="TDependencies" Relationship="Self.FK_TDependencies_UprocID" FromRole="TUproc" ToRole="TDependencies" />
+    <NavigationProperty Name="TEnvironment" Relationship="Self.FK_TUproc_EnvironmentID" FromRole="TUproc" ToRole="TEnvironment" />
+    <NavigationProperty Name="TJobMonitors" Relationship="Self.FK_TJobMonitor_UprocID" FromRole="TUproc" ToRole="TJobMonitor" />
+    <NavigationProperty Name="TJobRules" Relationship="Self.FK_TJobRule_UprocID" FromRole="TUproc" ToRole="TJobRule" />
+    <NavigationProperty Name="TRef" Relationship="Self.FK_TUproc_AccountTypeID" FromRole="TUproc" ToRole="TRef" />
+    <NavigationProperty Name="TRef1" Relationship="Self.FK_TUproc_JobTypeID" FromRole="TUproc" ToRole="TRef" />
+  </EntityType>
+  <Association Name="FK_TDependencies_SessionID">
+    <End Role="TSession" Type="Self.TSession" Multiplicity="1" />
+    <End Role="TDependencies" Type="Self.TDependency" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TSession">
+        <PropertyRef Name="SessionID" />
+      </Principal>
+      <Dependent Role="TDependencies">
+        <PropertyRef Name="SessionID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TDependencies_UprocID">
+    <End Role="TUproc" Type="Self.TUproc" Multiplicity="0..1" />
+    <End Role="TDependencies" Type="Self.TDependency" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TUproc">
+        <PropertyRef Name="UprocID" />
+      </Principal>
+      <Dependent Role="TDependencies">
+        <PropertyRef Name="UprocID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TEnvironment_NodeID">
+    <End Role="TNode" Type="Self.TNode" Multiplicity="1" />
+    <End Role="TEnvironment" Type="Self.TEnvironment" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TNode">
+        <PropertyRef Name="NodeID" />
+      </Principal>
+      <Dependent Role="TEnvironment">
+        <PropertyRef Name="NodeID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TJobMonitor_EnvironmentID">
+    <End Role="TEnvironment" Type="Self.TEnvironment" Multiplicity="1" />
+    <End Role="TJobMonitor" Type="Self.TJobMonitor" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TEnvironment">
+        <PropertyRef Name="EnvironmentID" />
+      </Principal>
+      <Dependent Role="TJobMonitor">
+        <PropertyRef Name="EnvironmentID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TSession_EnvironmentID">
+    <End Role="TEnvironment" Type="Self.TEnvironment" Multiplicity="1" />
+    <End Role="TSession" Type="Self.TSession" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TEnvironment">
+        <PropertyRef Name="EnvironmentID" />
+      </Principal>
+      <Dependent Role="TSession">
+        <PropertyRef Name="EnvironmentID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TUproc_EnvironmentID">
+    <End Role="TEnvironment" Type="Self.TEnvironment" Multiplicity="1" />
+    <End Role="TUproc" Type="Self.TUproc" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TEnvironment">
+        <PropertyRef Name="EnvironmentID" />
+      </Principal>
+      <Dependent Role="TUproc">
+        <PropertyRef Name="EnvironmentID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TJobAction_JobActionTypeID">
+    <End Role="TRef" Type="Self.TRef" Multiplicity="1" />
+    <End Role="TJobAction" Type="Self.TJobAction" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TRef">
+        <PropertyRef Name="RefID" />
+      </Principal>
+      <Dependent Role="TJobAction">
+        <PropertyRef Name="JobActionTypeID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TJobAction_JobID">
+    <End Role="TJobMonitor" Type="Self.TJobMonitor" Multiplicity="1" />
+    <End Role="TJobAction" Type="Self.TJobAction" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TJobMonitor">
+        <PropertyRef Name="JobID" />
+      </Principal>
+      <Dependent Role="TJobAction">
+        <PropertyRef Name="JobID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TJobMonitor_NodeID">
+    <End Role="TNode" Type="Self.TNode" Multiplicity="1" />
+    <End Role="TJobMonitor" Type="Self.TJobMonitor" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TNode">
+        <PropertyRef Name="NodeID" />
+      </Principal>
+      <Dependent Role="TJobMonitor">
+        <PropertyRef Name="NodeID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TJobMonitor_SessionID">
+    <End Role="TSession" Type="Self.TSession" Multiplicity="1" />
+    <End Role="TJobMonitor" Type="Self.TJobMonitor" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TSession">
+        <PropertyRef Name="SessionID" />
+      </Principal>
+      <Dependent Role="TJobMonitor">
+        <PropertyRef Name="SessionID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TJobMonitor_UprocID">
+    <End Role="TUproc" Type="Self.TUproc" Multiplicity="1" />
+    <End Role="TJobMonitor" Type="Self.TJobMonitor" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TUproc">
+        <PropertyRef Name="UprocID" />
+      </Principal>
+      <Dependent Role="TJobMonitor">
+        <PropertyRef Name="UprocID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TJobRule_ActivityTypeID">
+    <End Role="TRef" Type="Self.TRef" Multiplicity="1" />
+    <End Role="TJobRule" Type="Self.TJobRule" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TRef">
+        <PropertyRef Name="RefID" />
+      </Principal>
+      <Dependent Role="TJobRule">
+        <PropertyRef Name="ActivityTypeID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TJobRule_RecurrenceID">
+    <End Role="TRecurrencePattern" Type="Self.TRecurrencePattern" Multiplicity="1" />
+    <End Role="TJobRule" Type="Self.TJobRule" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TRecurrencePattern">
+        <PropertyRef Name="RecurrencePatternID" />
+      </Principal>
+      <Dependent Role="TJobRule">
+        <PropertyRef Name="RecurrenceID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TJobRule_SessionID">
+    <End Role="TSession" Type="Self.TSession" Multiplicity="1" />
+    <End Role="TJobRule" Type="Self.TJobRule" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TSession">
+        <PropertyRef Name="SessionID" />
+      </Principal>
+      <Dependent Role="TJobRule">
+        <PropertyRef Name="SessionID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TJobRule_UprocID">
+    <End Role="TUproc" Type="Self.TUproc" Multiplicity="1" />
+    <End Role="TJobRule" Type="Self.TJobRule" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TUproc">
+        <PropertyRef Name="UprocID" />
+      </Principal>
+      <Dependent Role="TJobRule">
+        <PropertyRef Name="UprocID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TOutage_JobRuleID">
+    <End Role="TJobRule" Type="Self.TJobRule" Multiplicity="1" />
+    <End Role="TOutage" Type="Self.TOutage" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TJobRule">
+        <PropertyRef Name="JobRuleID" />
+      </Principal>
+      <Dependent Role="TOutage">
+        <PropertyRef Name="JobRuleID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TLogin_RefID">
+    <End Role="TRef" Type="Self.TRef" Multiplicity="1" />
+    <End Role="TLogin" Type="Self.TLogin" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TRef">
+        <PropertyRef Name="RefID" />
+      </Principal>
+      <Dependent Role="TLogin">
+        <PropertyRef Name="AccountTypeID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TOutageDetails_OutageID">
+    <End Role="TOutage" Type="Self.TOutage" Multiplicity="1" />
+    <End Role="TOutageDetails" Type="Self.TOutageDetail" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TOutage">
+        <PropertyRef Name="OutageID" />
+      </Principal>
+      <Dependent Role="TOutageDetails">
+        <PropertyRef Name="OutageID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TRecurrencePattern_RecPattTypeID">
+    <End Role="TRef" Type="Self.TRef" Multiplicity="0..1" />
+    <End Role="TRecurrencePattern" Type="Self.TRecurrencePattern" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TRef">
+        <PropertyRef Name="RefID" />
+      </Principal>
+      <Dependent Role="TRecurrencePattern">
+        <PropertyRef Name="RecPattTypeID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TRecurrenceRange_RecRangeTypeID">
+    <End Role="TRef" Type="Self.TRef" Multiplicity="1" />
+    <End Role="TRecurrenceRange" Type="Self.TRecurrenceRange" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TRef">
+        <PropertyRef Name="RefID" />
+      </Principal>
+      <Dependent Role="TRecurrenceRange">
+        <PropertyRef Name="RecRangeTypeID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TSession_AccountTypeID">
+    <End Role="TRef" Type="Self.TRef" Multiplicity="1" />
+    <End Role="TSession" Type="Self.TSession" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TRef">
+        <PropertyRef Name="RefID" />
+      </Principal>
+      <Dependent Role="TSession">
+        <PropertyRef Name="AccountTypeID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TUproc_AccountTypeID">
+    <End Role="TRef" Type="Self.TRef" Multiplicity="1" />
+    <End Role="TUproc" Type="Self.TUproc" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TRef">
+        <PropertyRef Name="RefID" />
+      </Principal>
+      <Dependent Role="TUproc">
+        <PropertyRef Name="AccountTypeID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TUproc_JobTypeID">
+    <End Role="TRef" Type="Self.TRef" Multiplicity="1" />
+    <End Role="TUproc" Type="Self.TUproc" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TRef">
+        <PropertyRef Name="RefID" />
+      </Principal>
+      <Dependent Role="TUproc">
+        <PropertyRef Name="JobTypeID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TReports_TemplateID">
+    <End Role="TTemplate" Type="Self.TTemplate" Multiplicity="1" />
+    <End Role="TReports" Type="Self.TReport" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TTemplate">
+        <PropertyRef Name="TemplateID" />
+      </Principal>
+      <Dependent Role="TReports">
+        <PropertyRef Name="TemplateID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="DScheduleEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="TDependencies" EntityType="Self.TDependency" />
+    <EntitySet Name="TEnvironments" EntityType="Self.TEnvironment" />
+    <EntitySet Name="TJobActions" EntityType="Self.TJobAction" />
+    <EntitySet Name="TJobMonitors" EntityType="Self.TJobMonitor" />
+    <EntitySet Name="TJobRules" EntityType="Self.TJobRule" />
+    <EntitySet Name="TLogins" EntityType="Self.TLogin" />
+    <EntitySet Name="TNodes" EntityType="Self.TNode" />
+    <EntitySet Name="TOutages" EntityType="Self.TOutage" />
+    <EntitySet Name="TOutageDetails" EntityType="Self.TOutageDetail" />
+    <EntitySet Name="TRecurrencePatterns" EntityType="Self.TRecurrencePattern" />
+    <EntitySet Name="TRecurrenceRanges" EntityType="Self.TRecurrenceRange" />
+    <EntitySet Name="TRefs" EntityType="Self.TRef" />
+    <EntitySet Name="TReports" EntityType="Self.TReport" />
+    <EntitySet Name="TSessions" EntityType="Self.TSession" />
+    <EntitySet Name="TTemplates" EntityType="Self.TTemplate" />
+    <EntitySet Name="TUprocs" EntityType="Self.TUproc" />
+    <AssociationSet Name="FK_TDependencies_SessionID" Association="Self.FK_TDependencies_SessionID">
+      <End Role="TSession" EntitySet="TSessions" />
+      <End Role="TDependencies" EntitySet="TDependencies" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TDependencies_UprocID" Association="Self.FK_TDependencies_UprocID">
+      <End Role="TUproc" EntitySet="TUprocs" />
+      <End Role="TDependencies" EntitySet="TDependencies" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TEnvironment_NodeID" Association="Self.FK_TEnvironment_NodeID">
+      <End Role="TNode" EntitySet="TNodes" />
+      <End Role="TEnvironment" EntitySet="TEnvironments" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TJobMonitor_EnvironmentID" Association="Self.FK_TJobMonitor_EnvironmentID">
+      <End Role="TEnvironment" EntitySet="TEnvironments" />
+      <End Role="TJobMonitor" EntitySet="TJobMonitors" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TSession_EnvironmentID" Association="Self.FK_TSession_EnvironmentID">
+      <End Role="TEnvironment" EntitySet="TEnvironments" />
+      <End Role="TSession" EntitySet="TSessions" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TUproc_EnvironmentID" Association="Self.FK_TUproc_EnvironmentID">
+      <End Role="TEnvironment" EntitySet="TEnvironments" />
+      <End Role="TUproc" EntitySet="TUprocs" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TJobAction_JobActionTypeID" Association="Self.FK_TJobAction_JobActionTypeID">
+      <End Role="TRef" EntitySet="TRefs" />
+      <End Role="TJobAction" EntitySet="TJobActions" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TJobAction_JobID" Association="Self.FK_TJobAction_JobID">
+      <End Role="TJobMonitor" EntitySet="TJobMonitors" />
+      <End Role="TJobAction" EntitySet="TJobActions" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TJobMonitor_NodeID" Association="Self.FK_TJobMonitor_NodeID">
+      <End Role="TNode" EntitySet="TNodes" />
+      <End Role="TJobMonitor" EntitySet="TJobMonitors" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TJobMonitor_SessionID" Association="Self.FK_TJobMonitor_SessionID">
+      <End Role="TSession" EntitySet="TSessions" />
+      <End Role="TJobMonitor" EntitySet="TJobMonitors" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TJobMonitor_UprocID" Association="Self.FK_TJobMonitor_UprocID">
+      <End Role="TUproc" EntitySet="TUprocs" />
+      <End Role="TJobMonitor" EntitySet="TJobMonitors" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TJobRule_ActivityTypeID" Association="Self.FK_TJobRule_ActivityTypeID">
+      <End Role="TRef" EntitySet="TRefs" />
+      <End Role="TJobRule" EntitySet="TJobRules" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TJobRule_RecurrenceID" Association="Self.FK_TJobRule_RecurrenceID">
+      <End Role="TRecurrencePattern" EntitySet="TRecurrencePatterns" />
+      <End Role="TJobRule" EntitySet="TJobRules" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TJobRule_SessionID" Association="Self.FK_TJobRule_SessionID">
+      <End Role="TSession" EntitySet="TSessions" />
+      <End Role="TJobRule" EntitySet="TJobRules" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TJobRule_UprocID" Association="Self.FK_TJobRule_UprocID">
+      <End Role="TUproc" EntitySet="TUprocs" />
+      <End Role="TJobRule" EntitySet="TJobRules" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TOutage_JobRuleID" Association="Self.FK_TOutage_JobRuleID">
+      <End Role="TJobRule" EntitySet="TJobRules" />
+      <End Role="TOutage" EntitySet="TOutages" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TLogin_RefID" Association="Self.FK_TLogin_RefID">
+      <End Role="TRef" EntitySet="TRefs" />
+      <End Role="TLogin" EntitySet="TLogins" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TOutageDetails_OutageID" Association="Self.FK_TOutageDetails_OutageID">
+      <End Role="TOutage" EntitySet="TOutages" />
+      <End Role="TOutageDetails" EntitySet="TOutageDetails" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TRecurrencePattern_RecPattTypeID" Association="Self.FK_TRecurrencePattern_RecPattTypeID">
+      <End Role="TRef" EntitySet="TRefs" />
+      <End Role="TRecurrencePattern" EntitySet="TRecurrencePatterns" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TRecurrenceRange_RecRangeTypeID" Association="Self.FK_TRecurrenceRange_RecRangeTypeID">
+      <End Role="TRef" EntitySet="TRefs" />
+      <End Role="TRecurrenceRange" EntitySet="TRecurrenceRanges" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TSession_AccountTypeID" Association="Self.FK_TSession_AccountTypeID">
+      <End Role="TRef" EntitySet="TRefs" />
+      <End Role="TSession" EntitySet="TSessions" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TUproc_AccountTypeID" Association="Self.FK_TUproc_AccountTypeID">
+      <End Role="TRef" EntitySet="TRefs" />
+      <End Role="TUproc" EntitySet="TUprocs" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TUproc_JobTypeID" Association="Self.FK_TUproc_JobTypeID">
+      <End Role="TRef" EntitySet="TRefs" />
+      <End Role="TUproc" EntitySet="TUprocs" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TReports_TemplateID" Association="Self.FK_TReports_TemplateID">
+      <End Role="TTemplate" EntitySet="TTemplates" />
+      <End Role="TReports" EntitySet="TReports" />
+    </AssociationSet>
+    <FunctionImport Name="DScheduler_uspInsertDataIntoJobMonitor">
+      <Parameter Name="NodeID" Mode="In" Type="Int32" />
+      <Parameter Name="EnvironmentID" Mode="In" Type="Int32" />
+      <Parameter Name="SessionID" Mode="In" Type="Int32" />
+      <Parameter Name="UProcId" Mode="In" Type="Int32" />
+      <Parameter Name="UProcStatus" Mode="In" Type="String" />
+      <Parameter Name="StartedDateTime" Mode="In" Type="DateTime" />
+      <Parameter Name="CreatedBy" Mode="In" Type="String" />
+      <Parameter Name="UpdatedBy" Mode="In" Type="String" />
+      <Parameter Name="UpdatedDateTime" Mode="In" Type="DateTime" />
+      <Parameter Name="CreatedDateTime" Mode="In" Type="DateTime" />
+    </FunctionImport>
+  </EntityContainer>
+</Schema>

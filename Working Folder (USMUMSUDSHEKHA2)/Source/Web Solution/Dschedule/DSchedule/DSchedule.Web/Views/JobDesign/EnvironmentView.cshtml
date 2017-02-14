@@ -1,0 +1,89 @@
+﻿
+@{
+    ViewBag.Title = "EnvironmentView";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>DSchedule Environment</h2>
+<html>
+<head>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+    @Scripts.Render("~/bundles/jquery")
+    <link href="@Url.Content("~/Content/Gridmvc.css")" rel="stylesheet" />
+    <link href="@Url.Content("~/Content/bootstrap.min.css")" rel="stylesheet" />
+    <script src="@Url.Content("~/Scripts/gridmvc.min.js")"></script>
+    @*<script language="javascript">
+            function CallMyFunc() {
+                $('#newnode').val(null);
+            }
+        </script>*@
+    <script src="@Url.Content("~/Scripts/Environment.js")"></script>
+</head>
+<body>
+    <div class="container-fluid" style="height:300px">
+
+        @model DSchedule.Contracts.Models.EnvironmentModel
+
+        @using GridMvc.Html
+        @*@{
+                ViewBag.Title = "Details";
+            }
+            @{
+                Layout = null;
+            }*@
+
+        @Html.Grid((List<DSchedule.Contracts.Models.Environment>)Model.EnvironmentList).Named("environmentGrid").Columns(columns =>
+   {
+       columns.Add(c => c.EnvironmentID, true).Titled("Environment ID").Filterable(false).Css("style: Hide");
+       columns.Add(c => c.EnvironmentName).Titled("Environment").Filterable(true);
+       columns.Add(c => c.NodeName).Titled("Node").Filterable(true);
+       columns.Add(c => c.NodeID, true).Titled("Node ID").Filterable(false).Css("style: Hide");
+       columns.Add(c => c.CreatedDateTime).Titled("Added Date").Filterable(true);
+       columns.Add(c => c.EnvironmentPath).Titled("Path").Filterable(true);
+   }).WithPaging(7).Sortable(true)
+    </div>
+
+    <div class="container-fluid">
+
+        <h3>Create Environment</h3>
+        @using (Html.BeginForm("SaveEnvironment", "JobDesign", FormMethod.Post, new { transaction = Model }))
+        {
+            @Html.AntiForgeryToken()
+            <div class="form-horizontal well">
+                <div class="form-group">
+                    <label for="EnvironmentName" class="col-md-1">Environment</label>
+                    <div class="col-md-2">
+                        @Html.HiddenFor(model => Model.EnvironmentID, new { @id = "EnvironmentID" })
+                        @Html.TextBoxFor(model => Model.EnvironmentName, new { @Class = "form-control", @id = "EnvironmentName" })
+                        </div>
+                        <label for="NodeID" class="col-md-1">Node</label>
+
+                        <div class="col-md-2">
+                            @{
+                                List<SelectListItem> listItems = new List<SelectListItem>();
+                                Model.NodesList.ForEach(x => listItems.Add(new SelectListItem { Text = x.NodeName, Value = x.NodeID.ToString() }));
+                            }
+                            @Html.DropDownListFor(model => Model.NodeID, listItems, new { @Class = "form-control", @id = "NodeID" })
+                        </div>
+                        <label for="EnvironmentPath" class="col-md-1">Environment Path</label>
+                    <div class="col-md-2">
+                        @Html.TextBoxFor(model => Model.EnvironmentPath, new { @Class = "form-control", type = "File", @id = "EnvironmentPath" })
+                        </div>
+                    </div>
+                <div class="form-group">
+                    <div class="col-md-2">
+                        <input type="button" class="btn btn-primary" value="New Environment" name="btnNewNode" onclick="NewEnvironment()" />
+                    </div>
+                    <div class="col-md-2">
+                        <input name="btnSave" class="btn btn-primary" type="submit" value="Save" />
+                    </div>
+                    <div class="col-md-2">
+                        <input id="btnCancel" class="btn btn-primary" type="button" value="Cancel" />
+                    </div>
+                </div>
+            </div>
+                            }
+    </div>
+</body>
+</html>

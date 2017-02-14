@@ -1,0 +1,5 @@
+C:\Working Folder (USMUMSUDSHEKHA2)\Source\Web Solution\Dschedule\DSchedule\DSchedule.Framework.Helpers\bin\Debug\DSchedule.Framework.Helpers.dll
+C:\Working Folder (USMUMSUDSHEKHA2)\Source\Web Solution\Dschedule\DSchedule\DSchedule.Framework.Helpers\bin\Debug\DSchedule.Framework.Helpers.pdb
+C:\Working Folder (USMUMSUDSHEKHA2)\Source\Web Solution\Dschedule\DSchedule\DSchedule.Framework.Helpers\obj\Debug\DSchedule.Framework.Helpers.dll
+C:\Working Folder (USMUMSUDSHEKHA2)\Source\Web Solution\Dschedule\DSchedule\DSchedule.Framework.Helpers\obj\Debug\DSchedule.Framework.Helpers.pdb
+C:\Working Folder (USMUMSUDSHEKHA2)\Source\Web Solution\Dschedule\DSchedule\DSchedule.Framework.Helpers\obj\Debug\DSchedule.Framework.Helpers.csprojResolveAssemblyReference.cache

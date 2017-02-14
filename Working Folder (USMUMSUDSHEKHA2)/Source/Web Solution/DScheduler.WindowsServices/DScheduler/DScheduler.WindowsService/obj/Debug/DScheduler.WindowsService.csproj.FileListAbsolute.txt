@@ -1,0 +1,38 @@
+c:\users\astiwari\documents\visual studio 2012\Projects\DScheduler\DScheduler.WindowsService\bin\Debug\DScheduler.WindowsService.exe
+c:\users\astiwari\documents\visual studio 2012\Projects\DScheduler\DScheduler.WindowsService\bin\Debug\DScheduler.WindowsService.pdb
+c:\users\astiwari\documents\visual studio 2012\Projects\DScheduler\DScheduler.WindowsService\bin\Debug\System.Data.SQLite.dll
+c:\users\astiwari\documents\visual studio 2012\Projects\DScheduler\DScheduler.WindowsService\obj\Debug\DScheduler.WindowsService.ProjectInstaller.resources
+c:\users\astiwari\documents\visual studio 2012\Projects\DScheduler\DScheduler.WindowsService\obj\Debug\DScheduler.WindowsService.Properties.Resources.resources
+c:\users\astiwari\documents\visual studio 2012\Projects\DScheduler\DScheduler.WindowsService\obj\Debug\DScheduler.WindowsService.csproj.GenerateResource.Cache
+c:\users\astiwari\documents\visual studio 2012\Projects\DScheduler\DScheduler.WindowsService\obj\Debug\DScheduler.WindowsService.exe
+c:\users\astiwari\documents\visual studio 2012\Projects\DScheduler\DScheduler.WindowsService\obj\Debug\DScheduler.WindowsService.pdb
+C:\DSchedule\DScheduler.WindowServices\DScheduler\DScheduler.WindowsService\bin\Debug\DScheduler.WindowsService.exe.config
+C:\DSchedule\DScheduler.WindowServices\DScheduler\DScheduler.WindowsService\bin\Debug\DScheduler.WindowsService.exe.manifest
+C:\DSchedule\DScheduler.WindowServices\DScheduler\DScheduler.WindowsService\bin\Debug\DScheduler.WindowsService.application
+C:\DSchedule\DScheduler.WindowServices\DScheduler\DScheduler.WindowsService\bin\Debug\DScheduler.WindowsService.exe
+C:\DSchedule\DScheduler.WindowServices\DScheduler\DScheduler.WindowsService\bin\Debug\DScheduler.WindowsService.pdb
+C:\DSchedule\DScheduler.WindowServices\DScheduler\DScheduler.WindowsService\bin\Debug\DScheduler.BusinessServices.dll
+C:\DSchedule\DScheduler.WindowServices\DScheduler\DScheduler.WindowsService\bin\Debug\DScheduler.Common.dll
+C:\DSchedule\DScheduler.WindowServices\DScheduler\DScheduler.WindowsService\bin\Debug\EntityFramework.dll
+C:\DSchedule\DScheduler.WindowServices\DScheduler\DScheduler.WindowsService\bin\Debug\EntityFramework.SqlServer.dll
+C:\DSchedule\DScheduler.WindowServices\DScheduler\DScheduler.WindowsService\bin\Debug\System.Data.SQLite.dll
+C:\DSchedule\DScheduler.WindowServices\DScheduler\DScheduler.WindowsService\bin\Debug\DScheduler.Framework.dll
+C:\DSchedule\DScheduler.WindowServices\DScheduler\DScheduler.WindowsService\bin\Debug\DScheduler.Framework.Helpers.dll
+C:\DSchedule\DScheduler.WindowServices\DScheduler\DScheduler.WindowsService\bin\Debug\DScheduler.BusinessServices.pdb
+C:\DSchedule\DScheduler.WindowServices\DScheduler\DScheduler.WindowsService\bin\Debug\DScheduler.Common.pdb
+C:\DSchedule\DScheduler.WindowServices\DScheduler\DScheduler.WindowsService\bin\Debug\EntityFramework.xml
+C:\DSchedule\DScheduler.WindowServices\DScheduler\DScheduler.WindowsService\bin\Debug\EntityFramework.SqlServer.xml
+C:\DSchedule\DScheduler.WindowServices\DScheduler\DScheduler.WindowsService\bin\Debug\DScheduler.Framework.pdb
+C:\DSchedule\DScheduler.WindowServices\DScheduler\DScheduler.WindowsService\bin\Debug\DScheduler.Framework.Helpers.pdb
+C:\DSchedule\DScheduler.WindowServices\DScheduler\DScheduler.WindowsService\obj\Debug\DScheduler.WindowsService.csprojResolveAssemblyReference.cache
+C:\DSchedule\DScheduler.WindowServices\DScheduler\DScheduler.WindowsService\obj\Debug\DScheduler.WindowsService.DSchedulerService.resources
+C:\DSchedule\DScheduler.WindowServices\DScheduler\DScheduler.WindowsService\obj\Debug\DScheduler.WindowsService.ProjectInstaller.resources
+C:\DSchedule\DScheduler.WindowServices\DScheduler\DScheduler.WindowsService\obj\Debug\DScheduler.WindowsService.Properties.Resources.resources
+C:\DSchedule\DScheduler.WindowServices\DScheduler\DScheduler.WindowsService\obj\Debug\DScheduler.WindowsService.csproj.GenerateResource.Cache
+C:\DSchedule\DScheduler.WindowServices\DScheduler\DScheduler.WindowsService\obj\Debug\DScheduler.WindowsService.exe.manifest
+C:\DSchedule\DScheduler.WindowServices\DScheduler\DScheduler.WindowsService\obj\Debug\DScheduler.WindowsService.application
+C:\DSchedule\DScheduler.WindowServices\DScheduler\DScheduler.WindowsService\obj\Debug\DScheduler.WindowsService.exe
+C:\DSchedule\DScheduler.WindowServices\DScheduler\DScheduler.WindowsService\obj\Debug\DScheduler.WindowsService.pdb
+C:\DSchedule\Working Folder\Source\Web Solution\DScheduler.WindowsServices\DScheduler\DScheduler.WindowsService\bin\Debug\DScheduler.WindowsService.exe.config
+C:\DSchedule\Working Folder\Source\Web Solution\DScheduler.WindowsServices\DScheduler\DScheduler.WindowsService\obj\Debug\DScheduler.WindowsService.exe
+C:\DSchedule\Working Folder\Source\Web Solution\DScheduler.WindowsServices\DScheduler\DScheduler.WindowsService\obj\Debug\DScheduler.WindowsService.pdb

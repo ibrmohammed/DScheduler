@@ -1,0 +1,177 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{7C7203C4-A9FC-4DD1-840D-E4F076F60FCA}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>DScheduler.BusinessServices</RootNamespace>
+    <AssemblyName>DScheduler.BusinessServices</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net40\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net40\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="ConvertDataRowToEntities.cs" />
+    <Compile Include="DBConnectionString.cs" />
+    <Compile Include="DScheduleEntities.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DScheduleEntities.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DScheduleEntities.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DScheduleEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DScheduleEntities.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DScheduleEntities.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="ScheduledSessionsConverter.cs" />
+    <Compile Include="ScheduledSessionDetails.cs" />
+    <Compile Include="ScheduledJobRuleTasks.cs" />
+    <Compile Include="FetchDependencyRecordsForSession.cs" />
+    <Compile Include="GetDependencyRecordsForList.cs" />
+    <Compile Include="ProcessDependencyTasksForEachSession.cs" />
+    <Compile Include="ProcessServiceInformation.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="TDependency.cs">
+      <DependentUpon>DScheduleEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TEnvironment.cs">
+      <DependentUpon>DScheduleEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TJobMonitor.cs">
+      <DependentUpon>DScheduleEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TJobRule.cs">
+      <DependentUpon>DScheduleEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TLogin.cs">
+      <DependentUpon>DScheduleEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TNode.cs">
+      <DependentUpon>DScheduleEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TOutage.cs">
+      <DependentUpon>DScheduleEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TOutageDetail.cs">
+      <DependentUpon>DScheduleEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TRecurrencePattern.cs">
+      <DependentUpon>DScheduleEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TRecurrenceRange.cs">
+      <DependentUpon>DScheduleEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TRef.cs">
+      <DependentUpon>DScheduleEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TReport.cs">
+      <DependentUpon>DScheduleEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TSession.cs">
+      <DependentUpon>DScheduleEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TTemplate.cs">
+      <DependentUpon>DScheduleEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TUproc.cs">
+      <DependentUpon>DScheduleEntities.tt</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.Config" />
+    <EntityDeploy Include="DScheduleEntities.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>DScheduleEntities.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <None Include="DScheduleEntities.edmx.diagram">
+      <DependentUpon>DScheduleEntities.edmx</DependentUpon>
+    </None>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\DScheduler.Common\DScheduler.Common.csproj">
+      <Project>{e0fd87d3-123b-452b-a09e-9752033a81ab}</Project>
+      <Name>DScheduler.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\DScheduler.Framework.Helpers\DScheduler.Framework.Helpers.csproj">
+      <Project>{0ad8dc82-2b4a-4cc1-8b5b-14b771dd7093}</Project>
+      <Name>DScheduler.Framework.Helpers</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\DScheduler.Framework\DScheduler.Framework.csproj">
+      <Project>{cb840126-ab0c-43c9-8b69-899a7597a7b8}</Project>
+      <Name>DScheduler.Framework</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="DScheduleEntities.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>DScheduleEntities.edmx</DependentUpon>
+      <LastGenOutput>DScheduleEntities.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="DScheduleEntities.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>DScheduleEntities.edmx</DependentUpon>
+      <LastGenOutput>DScheduleEntities.cs</LastGenOutput>
+    </Content>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

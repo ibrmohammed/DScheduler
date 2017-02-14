@@ -1,0 +1,159 @@
+﻿
+@{
+    ViewBag.Title = "DSchedular - Uprocs";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@model DSchedule.Contracts.Models.UprocsModel
+@{
+    var listUprocs = (Model.UprocsList != null && Model.UprocsList.Count > 0) ? Model.UprocsList : new List<DSchedule.Contracts.Models.Uprocs>();
+}
+<h2>Uprocs</h2>
+<html>
+<head>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+    @Scripts.Render("~/bundles/jquery")
+    <link href="@Url.Content("~/Content/Gridmvc.css")" rel="stylesheet" />
+    <link href="@Url.Content("~/Content/bootstrap.min.css")" rel="stylesheet" />
+    <script src="@Url.Content("~/Scripts/gridmvc.min.js")"></script>
+    <script src="@Url.Content("~/Scripts/Uprocs.js")"></script>
+    <script>
+        $(function () {
+            //pageGrids.JobMonitorGrid.onRowSelect(function (e) {
+            //     d(e.row.UprocID, e.row.SessionID);
+
+            //});
+
+            $(".tablerow").on("click", function () {
+                $(this).closest('table').find('.tablerow.active').removeClass('active');
+                $(this).addClass("active");
+
+                var uprocId = $(this).find("td.uprocId").text();
+                var sessionId = $(this).find("td.sessionId").text();
+                d(uprocId, sessionId);
+
+            });
+
+            $(".leftnav").on("click", function () {
+                $(this).closest('leftnavbar').find('.leftnav.active').removeClass('active');
+                $(this).addClass("active");
+            });
+
+
+
+
+            $("#rundate-datepicker").datepicker({
+                //showOn: "button",
+                //buttonImage: "/Images/CalenderGrey.png",
+                //buttonImageOnly: true,
+                changeMonth: true,
+                changeYear: true
+            });
+
+            $('#btn').click(function () {
+                $("#rundate-datepicker").focus();
+            });
+
+
+            function d(uprocID, sessionID) {
+                // alert("am here" + uprocID + " " + sessionID);
+                var url = "/JobMonitor/GetUProcDetailsByID/";
+                $.post(url, { uprocID: uprocID, sessionID: sessionID })
+                 .done(function (response) {
+                     //  alert("#2");
+                     $("#myModalContent").html(response);
+                     $("#myModal").modal('show')
+                 });
+            }
+        });
+    </script>
+</head>
+<body>
+    <div class="container-fluid" id="UprocDetails" style="height:300px">
+        @using DSchedule.Contracts.Models
+        @using GridMvc.Html
+        @Html.Grid((List<DSchedule.Contracts.Models.Uprocs>)Model.UprocsList).Named("ordersGrid").Columns(columns =>
+   {
+       columns.Add(c => c.UprocID, true);
+       columns.Add(c => c.UprocName).Titled("Uprocs").Filterable(false);
+       columns.Add(c => c.JobTypeName).Titled("Type").Filterable(true);
+       columns.Add(c => c.JobTypeID, true);
+       columns.Add(c => c.EnvironmentName).Titled("Environment").Filterable(true);
+       columns.Add(c => c.EnvironmentID, true);
+       columns.Add(c => c.AccountName).Titled("User").Filterable(true);
+       columns.Add(c => c.AccountTypeID, true);
+       columns.Add(c => c.FolderPath).Titled("Folder Path").Filterable(true);
+       columns.Add(c => c.Command).Titled("Command").Filterable(true);
+   }).WithPaging(3).Sortable(true)
+    </div>
+    <div class="container-fluid">
+        <h3>Create Uproc</h3>
+        @using (Html.BeginForm("UprocsView", "JobDesign", Model, FormMethod.Post))
+        {
+            @Html.AntiForgeryToken()
+            <div class="form-horizontal well">
+                <div class="form-group">
+                    <div class="col-md-1">
+                        @Html.HiddenFor(model => Model.UprocID, new { @id = "hdnUprocId" })@Html.Label("Uproc Name")
+                    </div>
+                    <div class="col-md-2">
+                        @Html.TextBoxFor(model => Model.UprocName, new { @id = "txtUprocName",@class = "form-control"})
+                        @Html.ValidationMessageFor(modelItem => @Model.UprocName)
+                    </div>
+                    <div class="col-md-1">
+                        @Html.Label("Job Type")
+                    </div>
+                    <div class="col-md-2">
+                        @Html.DropDownListFor(x => x.JobTypeID, new SelectList(ViewBag.JobRef, "RefId", "RefDescription"), new { @id = "cmbJobType", @class = "form-control" })
+                        @Html.ValidationMessageFor(modelItem => @Model.JobTypeID)
+                    </div>
+                    <div class="col-md-1">
+                        @Html.Label("Environment")
+                    </div>
+                    <div class="col-md-2">
+                        @Html.DropDownListFor(x => x.EnvironmentID, new SelectList(ViewBag.EnvironmentRef, "RefId", "RefDescription"), new { @id = "cmbEnvironment", @class = "form-control" })
+                        @Html.ValidationMessageFor(modelItem => @Model.EnvironmentID)
+                    </div>
+                    <div class="col-md-1">
+                        @Html.Label("Type Of Account")
+                    </div>
+                    <div class="col-md-2">
+                        @Html.DropDownListFor(x => x.AccountTypeID, new SelectList(ViewBag.AccountRef, "RefId", "RefDescription"), new { @id = "cmbAccountType", @class = "form-control" })
+                        @Html.ValidationMessageFor(modelItem => @Model.AccountTypeID)
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-md-1">
+                        @Html.Label("Folder Path")
+                    </div>
+                    <div class="col-md-2">
+                        @Html.TextBoxFor(m => m.FolderPath, new { @id = "txtFolderPath", @class = "form-control" })
+                        @Html.ValidationMessageFor(modelItem => @Model.FolderPath)
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-md-1">
+                        @Html.Label("Command")
+                    </div>
+                    <div class="col-md-2">
+                        @Html.TextBoxFor(model => Model.Command, new { id = "txtCommand", @class = "form-control" })
+                        @Html.ValidationMessageFor(modelItem => @Model.Command)
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-md-2">
+                        <input type="button" value="New Uproc" name="btnNewUproc" class="btn btn-primary" />
+                    </div>
+                    <div class="col-md-2">
+                        <input name="btnSave" type="submit" value="Save" class="btn btn-primary"/>
+                    </div>
+                    <div class="col-md-2">
+                        <input id="btnCancel" type="button" value="Cancel" class="btn btn-primary"/>
+                    </div>
+                </div>
+
+            </div>
+        }
+    </div>
+</body>
+</html>

@@ -1,0 +1,25 @@
+c:\users\astiwari\documents\visual studio 2012\Projects\DScheduler\DScheduler.BusinessServices\bin\Debug\DScheduler.BusinessServices.dll.config
+c:\users\astiwari\documents\visual studio 2012\Projects\DScheduler\DScheduler.BusinessServices\bin\Debug\DScheduler.BusinessServices.dll
+c:\users\astiwari\documents\visual studio 2012\Projects\DScheduler\DScheduler.BusinessServices\bin\Debug\DScheduler.BusinessServices.pdb
+c:\users\astiwari\documents\visual studio 2012\Projects\DScheduler\DScheduler.BusinessServices\bin\Debug\EntityFramework.dll
+c:\users\astiwari\documents\visual studio 2012\Projects\DScheduler\DScheduler.BusinessServices\bin\Debug\EntityFramework.SqlServer.dll
+c:\users\astiwari\documents\visual studio 2012\Projects\DScheduler\DScheduler.BusinessServices\bin\Debug\EntityFramework.xml
+c:\users\astiwari\documents\visual studio 2012\Projects\DScheduler\DScheduler.BusinessServices\bin\Debug\EntityFramework.SqlServer.xml
+c:\users\astiwari\documents\visual studio 2012\Projects\DScheduler\DScheduler.BusinessServices\obj\Debug\DScheduler.BusinessServices.dll
+c:\users\astiwari\documents\visual studio 2012\Projects\DScheduler\DScheduler.BusinessServices\obj\Debug\DScheduler.BusinessServices.pdb
+C:\DSchedule\DScheduler.WindowServices\DScheduler\DScheduler.BusinessServices\bin\Debug\DScheduler.BusinessServices.dll.config
+C:\DSchedule\DScheduler.WindowServices\DScheduler\DScheduler.BusinessServices\bin\Debug\DScheduler.BusinessServices.dll
+C:\DSchedule\DScheduler.WindowServices\DScheduler\DScheduler.BusinessServices\bin\Debug\DScheduler.BusinessServices.pdb
+C:\DSchedule\DScheduler.WindowServices\DScheduler\DScheduler.BusinessServices\bin\Debug\DScheduler.Common.dll
+C:\DSchedule\DScheduler.WindowServices\DScheduler\DScheduler.BusinessServices\bin\Debug\DScheduler.Framework.dll
+C:\DSchedule\DScheduler.WindowServices\DScheduler\DScheduler.BusinessServices\bin\Debug\DScheduler.Framework.Helpers.dll
+C:\DSchedule\DScheduler.WindowServices\DScheduler\DScheduler.BusinessServices\bin\Debug\EntityFramework.dll
+C:\DSchedule\DScheduler.WindowServices\DScheduler\DScheduler.BusinessServices\bin\Debug\EntityFramework.SqlServer.dll
+C:\DSchedule\DScheduler.WindowServices\DScheduler\DScheduler.BusinessServices\bin\Debug\DScheduler.Common.pdb
+C:\DSchedule\DScheduler.WindowServices\DScheduler\DScheduler.BusinessServices\bin\Debug\DScheduler.Framework.Helpers.pdb
+C:\DSchedule\DScheduler.WindowServices\DScheduler\DScheduler.BusinessServices\bin\Debug\DScheduler.Framework.pdb
+C:\DSchedule\DScheduler.WindowServices\DScheduler\DScheduler.BusinessServices\bin\Debug\EntityFramework.xml
+C:\DSchedule\DScheduler.WindowServices\DScheduler\DScheduler.BusinessServices\bin\Debug\EntityFramework.SqlServer.xml
+C:\DSchedule\DScheduler.WindowServices\DScheduler\DScheduler.BusinessServices\obj\Debug\DScheduler.BusinessServices.csprojResolveAssemblyReference.cache
+C:\DSchedule\DScheduler.WindowServices\DScheduler\DScheduler.BusinessServices\obj\Debug\DScheduler.BusinessServices.dll
+C:\DSchedule\DScheduler.WindowServices\DScheduler\DScheduler.BusinessServices\obj\Debug\DScheduler.BusinessServices.pdb
